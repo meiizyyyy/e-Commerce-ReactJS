@@ -1,0 +1,63 @@
+@use "@styles/mixins.module.scss" as mixins;
+@use "@styles/variables.module.scss" as variables;
+
+.container {
+    padding: 15px 0px;
+    @include mixins.flex_box_custom(center, center, 0px);
+}
+
+.container__header {
+    width: 1250px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+.container__headerBox {
+    display: flex;
+    @include mixins.flex_box_custom(center, center, 20px);
+}
+
+.container__headerIcon {
+    @include mixins.flex_box_custom(center, center, 10px);
+}
+
+.container__headerMenu {
+    @include mixins.flex_box_custom(center, center, 30px);
+    padding-top: 10px;
+    font-size: 15px;
+    color: variables.$primary_color;
+}
+
+.boxIcon {
+    @include mixins.global_radius(50%);
+    @include mixins.flex_box_custom(center, center, 0px);
+    background-color: variables.$primary_color;
+    width: 26px;
+    height: 26px;
+}
+
+.widgetIcon {
+    @include mixins.global_radius(50%);
+    @include mixins.flex_box_custom(center, center, 0px);
+    background-color: variables.$primary_color;
+    width: 26px;
+    height: 26px;
+}
+
+.header__menu::after {
+    content: "";
+    display: block;
+    height: 3px;
+    margin-top: 6px;
+    background: variables.$primary_color;
+    transform-origin: right;
+    opacity: 0;
+    transform: scale(0);
+    transition: transform 500ms, opacity 500ms;
+}
+
+.header__menu:hover::after {
+    transform: scale(1);
+    opacity: 1;
+}
