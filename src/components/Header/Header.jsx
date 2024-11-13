@@ -7,6 +7,7 @@ import Logo from "@images/Logo-retina.png";
 import Cart from "@icons/svgs/Cart.svg";
 import Favorite from "@icons/svgs/Favorite.svg";
 import Compare from "@icons/svgs/Compare.svg";
+import { Link } from "react-router-dom";
 
 const Header = () => {
     const { container, container__header, container__headerIcon, container__headerBox, container__headerMenu } = styles;
@@ -28,7 +29,9 @@ const Header = () => {
                 </div>
 
                 <div>
-                    <img style={{ width: "153px", height: "53px" }} src={Logo} alt="" />
+                    <Link to={"/"}>
+                        <img style={{ width: "153px", height: "53px" }} src={Logo} alt="" />
+                    </Link>
                 </div>
 
                 <div className={container__headerBox}>
