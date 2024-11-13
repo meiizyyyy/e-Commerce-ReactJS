@@ -16,13 +16,13 @@ const Header = () => {
             <div className={container__header}>
                 <div className={container__headerBox}>
                     <div className={container__headerIcon}>
-                        {dataBoxIcon.map((item) => {
-                            return <BoxIcon type={item.type} href={item.href} />;
+                        {dataBoxIcon.map((item, index) => {
+                            return <BoxIcon type={item.type} href={item.href} key={index} />;
                         })}
                     </div>
                     <div className={container__headerMenu}>
-                        {dataMenu.slice(0, 3).map((item) => {
-                            return <MenuTitle content={item.content} href={item.href} />;
+                        {dataMenu.slice(0, 3).map((item, index) => {
+                            return <MenuTitle content={item.content} href={item.href} key={index} />;
                         })}
                     </div>
                 </div>
@@ -33,8 +33,8 @@ const Header = () => {
 
                 <div className={container__headerBox}>
                     <div className={container__headerMenu}>
-                        {dataMenu.slice(3, 7).map((item) => {
-                            return <MenuTitle content={item.content} href={item.href} />;
+                        {dataMenu.slice(3, 7).map((item, index) => {
+                            return <MenuTitle content={item.content} href={item.href} key={index} />;
                         })}
                     </div>
                     <div className={container__headerBox}>

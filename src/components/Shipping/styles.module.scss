@@ -1,0 +1,35 @@
+@use "@styles/mixins.module.scss" as mixins;
+@use "@styles/variables.module.scss" as variables;
+
+.container__shipping {
+    @include mixins.flex_box_custom(space-between, center, 0px);
+    // height: 144px;
+    background-color: variables.$primary-color;
+    margin-top: -6%;
+    padding: 20px 50px;
+}
+
+.item {
+    @include mixins.flex_box_custom(center, center, 15px);
+    width: 280px;
+    height: 104px;
+    flex-direction: row;
+}
+
+.content {
+    @include mixins.flex_box_custom(center, flex-start, 15px);
+    flex-direction: column;
+    color: #fff;
+    font-weight: 400;
+
+    .content__main {
+        font-size: 17px;
+        line-height: 22px;
+    }
+
+    .content__sub {
+        font-size: 16px;
+        line-height: 21px;
+        color: #ffffffc7;
+    }
+}

@@ -4,6 +4,10 @@
 .container {
     padding: 15px 0px;
     @include mixins.flex_box_custom(center, center, 0px);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
 }
 
 .container__header {
@@ -26,13 +30,13 @@
     @include mixins.flex_box_custom(center, center, 30px);
     padding-top: 10px;
     font-size: 15px;
-    color: variables.$primary_color;
+    color: variables.$primary-color;
 }
 
 .boxIcon {
     @include mixins.global_radius(50%);
     @include mixins.flex_box_custom(center, center, 0px);
-    background-color: variables.$primary_color;
+    background-color: variables.$primary-color;
     width: 26px;
     height: 26px;
 }
@@ -40,7 +44,7 @@
 .widgetIcon {
     @include mixins.global_radius(50%);
     @include mixins.flex_box_custom(center, center, 0px);
-    background-color: variables.$primary_color;
+    background-color: variables.$primary-color;
     width: 26px;
     height: 26px;
 }
@@ -50,7 +54,7 @@
     display: block;
     height: 3px;
     margin-top: 6px;
-    background: variables.$primary_color;
+    background: variables.$primary-color;
     transform-origin: right;
     opacity: 0;
     transform: scale(0);
