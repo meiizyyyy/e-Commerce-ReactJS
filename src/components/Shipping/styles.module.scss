@@ -3,7 +3,6 @@
 
 .container__shipping {
     @include mixins.flex_box_custom(space-between, center, 0px);
-    // height: 144px;
     background-color: variables.$primary-color;
     margin-top: -6%;
     padding: 20px 50px;

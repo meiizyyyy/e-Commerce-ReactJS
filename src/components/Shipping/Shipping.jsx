@@ -7,13 +7,13 @@ const Shipping = () => {
     const { container__shipping } = styles;
     return (
         <>
-            <MainLayouts>
+           
                 <div className={container__shipping}>
                     {shipping.map((item, index) => {
                         return <Item title={item.title} description={item.description} src={item.src} key={index} />;
                     })}
                 </div>
-            </MainLayouts>
+          
         </>
     );
 };
