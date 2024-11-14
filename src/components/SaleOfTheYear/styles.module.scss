@@ -1,0 +1,42 @@
+@use "@styles/mixins.module.scss" as mixins;
+@use "@styles/variables.module.scss" as variables;
+
+.container__soty {
+    @include mixins.flex_box_custom(space-between, center, 0px);
+    margin-top: 130px;
+}
+.soty_maincontent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.soty__title {
+    color: variables.$secondary-color;
+    font-size: 35px;
+    font-weight: 400;
+    text-transform: capitalize;
+    line-height: 46px;
+    text-align: center;
+}
+
+.soty__desc {
+    color: variables.$third-color;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 26px;
+    width: 460px;
+    text-align: center;
+}
+
+.soty_button {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.soty__images {
+    @include mixins.flex_box_custom(center, center, 0px);
+    width: 100%;
+}

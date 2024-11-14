@@ -1,9 +1,18 @@
 import React from "react";
 import styles from "./styles.module.scss";
-const Button = ({ content }) => {
-    const { button } = styles;
+import classNames from "classnames";
+const Button = ({ content, isPrimary = true }) => {
+    const { button, button__primary, button__secondary } = styles;
 
-    return <button className={button}>{content}</button>;
+    return (
+        <button
+            className={classNames(button, {
+                [button__primary]: isPrimary,
+                [button__secondary]: !isPrimary,
+            })}>
+            {content}
+        </button>
+    );
 };
 
 export default Button;

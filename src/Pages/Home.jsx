@@ -6,6 +6,7 @@ import MainLayouts from "@c/Layouts/Layouts";
 import HighlightMainProduct from "@c/HighlightMainProduct/HighlightMainProduct";
 import { fetchAllProductAPI } from "../services/api.service.";
 import PopularProductList from "../components/PopularProductList/PopularProductList";
+import SaleOfTheYear from "../components/SaleOfTheYear/SaleOfTheYear";
 
 const HomePage = () => {
     const [ProductList, setProductList] = useState([]);
@@ -34,7 +35,9 @@ const HomePage = () => {
                 <HighlightTitle />
                 <HighlightMainProduct data={ProductList.slice(0, 2)} />
                 <PopularProductList data={ProductList.slice(2, 10)} />
+                
             </MainLayouts>
+            <SaleOfTheYear />
         </>
     );
 };

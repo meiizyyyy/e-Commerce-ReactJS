@@ -5,6 +5,7 @@ import Youtube from "@icons/svgs/Youtube.svg";
 import Compare from "@icons/svgs/Compare.svg";
 import Favorite from "@icons/svgs/Favorite.svg";
 import Cart from "@icons/svgs/Cart.svg";
+import Eyes from "@icons/svgs/Eyes.svg";
 
 const ProductItem = ({ image, hoverImage, name, price }) => {
     const { product__card, itemImg, imgOnHover, CTAList, ctaITEM, product__title, product__price } = styles;
@@ -24,7 +25,7 @@ const ProductItem = ({ image, hoverImage, name, price }) => {
                         <img src={Compare} alt="" />
                     </div>
                     <div className={ctaITEM}>
-                        <img src={Cart} alt="" />
+                        <img src={Eyes} alt="" />
                     </div>
                 </div>
             </div>
