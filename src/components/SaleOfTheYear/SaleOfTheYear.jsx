@@ -63,8 +63,8 @@ const SaleOfTheYear = () => {
         handleTranslateX();
     }, [scrollPosition]);
 
-    console.log("check direc", scrollDirection);
-    console.log("check srcll", scrollPosition);
+    // console.log("check direc", scrollDirection);
+    // console.log("check srcll", scrollPosition);
     return (
         <div className={container__soty}>
             <div className={soty__images} style={{ transform: `translateX(${translateXPos}px)`, transition: "transform 600ms" }}>

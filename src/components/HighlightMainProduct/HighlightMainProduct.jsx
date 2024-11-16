@@ -7,7 +7,7 @@ const HighlightMainProduct = (props) => {
     const { data } = props;
     const { container__highlight, container__product } = styles;
 
-    console.log("Check data props", data);
+    // console.log("Check data props", data);
     return (
         <div className={container__highlight}>
             <BannerCountdown />

@@ -1,0 +1,9 @@
+@use "@styles/mixins.module.scss" as mixins;
+@use "@styles/variables.module.scss" as variables;
+
+.sidebar__HeaderContainer {
+    @include mixins.flex_box_custom(center, center, 10px);
+    flex-direction: column;
+    font-size: 18px;
+    padding-bottom: 10px;
+}

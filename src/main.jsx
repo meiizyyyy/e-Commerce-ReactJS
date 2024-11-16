@@ -13,9 +13,10 @@ import ContactsPage from "./Pages/Contacts.jsx";
 import OurShopPage from "./Pages/OurShop.jsx";
 import Banner from "./components/Banner/Banner.jsx";
 import HomePage from "./Pages/Home.jsx";
+import { SidebarContext, SidebarWrapper } from "./contexts/Sidebar.context.jsx";
 
 const router = createBrowserRouter([
-    {},
+    
     {
         path: "/",
         element: <App />,
@@ -42,16 +43,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
-        <RouterProvider
-            router={router}
-            future={{
-                v7_fetcherPersist: true,
-                v7_normalizeFormMethod: true,
-                v7_partialHydration: true,
-                v7_relativeSplatPath: true,
-                v7_skipActionErrorRevalidation: true,
-                v7_startTransition: true,
-            }}
-        />
+        <SidebarWrapper>
+            <RouterProvider router={router} />
+        </SidebarWrapper>
     </React.StrictMode>,
 );

@@ -1,0 +1,66 @@
+@use "@styles/mixins.module.scss" as mixins;
+@use "@styles/variables.module.scss" as variables;
+
+.product__item {
+    @include mixins.flex_box_custom(normal, flex-start, 0px);
+    padding: 20px;
+    transition: all 0.3s ease;
+    position: relative;
+    .item__image {
+        width: 30%;
+        // height: 50%;
+        img {
+            max-width: 60px;
+            max-height: 100px;
+        }
+    }
+
+    .item__content {
+        @include mixins.flex_box_custom(center, normal, 5px);
+        flex-direction: column;
+        max-width: 60%;
+        height: 100%;
+        .item__title {
+            color: variables.$primary-color;
+            font-weight: 400;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .item__size {
+            color: #9e9e9e;
+        }
+        .item__desc {
+            @include mixins.flex_box_custom(normal, flex-start, 10px);
+            font-size: 14px;
+            color: variables.$secondary-color;
+
+            .item__quantity {
+                text-wrap: nowrap;
+            }
+            .item__price {
+                text-wrap: nowrap;
+            }
+        }
+        .item__close {
+            position: absolute;
+            top: 10px;
+            right: 5px;
+            cursor: pointer;
+            opacity: 0;
+            // transform: translateX(30px);
+            transition: all 0.3s ease;
+        }
+    }
+
+    &:hover {
+        background-color: #f7f7f7;
+        transition: all 0.3s ease;
+
+        .item__close {
+            opacity: 1;
+            // transform: translateX(0);
+        }
+    }
+}

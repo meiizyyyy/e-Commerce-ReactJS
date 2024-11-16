@@ -1,0 +1,60 @@
+@use "@styles/mixins.module.scss" as mixins;
+@use "@styles/variables.module.scss" as variables;
+
+.container__footer {
+    @include mixins.flex_box_custom(center, center, 20px);
+    flex-direction: column;
+    background-color: #363636;
+    padding: 50px;
+    margin-top: 100px;
+}
+.container__footer__link {
+    @include mixins.flex_box_custom(center, center, 0px);
+}
+
+.footer__linkItem {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 400;
+    text-transform: capitalize;
+    line-height: 20px;
+    margin-right: calc(45px / 2);
+    margin-left: calc(45px / 2);
+    transition: color 300ms;
+
+    &:hover {
+        color: variables.$third-color;
+        transition: color 300ms;
+    }
+}
+
+.footer__checkout {
+    @include mixins.flex_box_custom(center, center, 20px);
+    flex-direction: column;
+    margin-top: 20px;
+
+    .footer__checkoutTitle {
+        text-align: center;
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 21px;
+    }
+
+    .footer__checkoutItem {
+        @include mixins.flex_box_custom(center, center, 20px);
+
+        img {
+            width: 50px;
+            height: 30px;
+        }
+    }
+}
+
+.footer__copyright {
+    text-align: center;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 21px;
+}

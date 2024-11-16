@@ -22,11 +22,11 @@ const HomePage = () => {
         if (res.data) {
             setProductList(res.data.contents);
             // console.log("check res", res);
-            // console.log("Check res data", res.data.contents);
+            console.log("Check res data", res.data.contents);
         }
     };
     //async
-    console.log("Check list", ProductList);
+    // console.log("Check list", ProductList);
     return (
         <>
             <Banner />
