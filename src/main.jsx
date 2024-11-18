@@ -14,9 +14,9 @@ import OurShopPage from "./Pages/OurShop.jsx";
 import Banner from "./components/Banner/Banner.jsx";
 import HomePage from "./Pages/Home.jsx";
 import { SidebarContext, SidebarWrapper } from "./contexts/Sidebar.context.jsx";
+import { StoreWrapper } from "./contexts/Store.context.jsx";
 
 const router = createBrowserRouter([
-    
     {
         path: "/",
         element: <App />,
@@ -43,8 +43,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
-        <SidebarWrapper>
-            <RouterProvider router={router} />
-        </SidebarWrapper>
+        <StoreWrapper>
+            <SidebarWrapper>
+                <RouterProvider router={router} />
+            </SidebarWrapper>
+        </StoreWrapper>
     </React.StrictMode>,
 );

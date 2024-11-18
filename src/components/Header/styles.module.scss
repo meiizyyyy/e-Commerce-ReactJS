@@ -30,7 +30,7 @@
     transition: transform 600ms ease;
     backdrop-filter: blur(5px);
     z-index: 999;
-    box-shadow: 2px 0px 12px 0px rgba(0, 0, 0, 0.15)
+    box-shadow: 2px 0px 12px 0px rgba(0, 0, 0, 0.15);
 }
 
 .container__headerBox {
@@ -64,6 +64,23 @@
     background-color: variables.$primary-color;
     width: 26px;
     height: 26px;
+}
+
+.header__menu {
+    position: relative;
+    .subMenu {
+        position: absolute;
+        background-color: #ffffffe6;
+        transition: transform 600ms ease;
+        backdrop-filter: blur(5px);
+        border-radius: 3px;
+        box-shadow: 2px 0px 12px 0px rgba(0, 0, 0, 0.15);
+        padding: 10px;
+        top: 25px;
+
+        @include mixins.flex_box_custom(center, flex-start, 5px);
+        flex-direction: column;
+    }
 }
 
 .header__menu::after {

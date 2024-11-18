@@ -6,7 +6,7 @@
     flex-direction: column;
     width: 100%;
 
-    .register__header{
+    .register__header {
         font-size: 18;
         margin-top: 20px;
     }
@@ -22,7 +22,27 @@
         width: 100%;
     }
 
-    .button__login {
+    .buttonRegister {
+        color: #ffffff;
+        font-size: 12px;
+        cursor: pointer;
+        padding: 13px 45px;
+        border: 1px solid;
+        transition: all 0.3s;
+        width: 100%;
+        height: 42px;
+        border-radius: 5px;
+        background-color: variables.$primary-color;
+
+        &:hover {
+            background-color: transparent;
+            color: variables.$primary-color !important;
+            transition: all 0.3s !important;
+            border-color: #333333 !important;
+        }
+    }
+
+    .buttonSignIn {
         @include mixins.button(176px, 42px, 5px, variables.$primary-color);
         background-color: transparent;
         color: variables.$primary-color;
@@ -33,9 +53,10 @@
         transition: all 0.3s;
         width: 100%;
         &:hover {
-            background-color: variables.$primary-color;
-            color: #fff;
-            transition: all 0.3s;
+            background-color: variables.$primary-color !important;
+            color: #fff !important;
+            transition: all 0.3s !important;
+            border-color: #333333 !important;
         }
     }
 }

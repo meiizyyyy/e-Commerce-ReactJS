@@ -18,7 +18,7 @@ const Footer = () => {
                 {data.map((item, index) => {
                     return (
                         <div>
-                            <Link className={footer__linkItem} to={item.href}>
+                            <Link className={footer__linkItem} to={item.href} key={index}>
                                 {item.content}
                             </Link>
                         </div>

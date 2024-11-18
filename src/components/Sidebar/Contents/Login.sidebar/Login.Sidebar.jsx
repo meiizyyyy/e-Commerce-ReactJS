@@ -1,19 +1,49 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./styles.module.scss";
-import { Checkbox, Col, Divider, Form, Input, Row } from "antd";
+import { Checkbox, Col, Divider, Form, Input, Row, Button, message, notification } from "antd";
 import FormItem from "antd/es/form/FormItem";
 import { Link } from "react-router-dom";
-import Button from "@c/Button/Button";
+import Cookies from "js-cookie";
+// import Button from "@c/Button/Button";
 import { SidebarContext } from "../../../../contexts/Sidebar.context";
+import { getAccountInfoAPI, loginAPI } from "../../../../services/api.service.";
+import { StoreContext } from "../../../../contexts/Store.context";
 const LoginSidebar = () => {
-    const { sidebar__login, login__content, login__header, login__fpw, button__register } = styles;
+    const { sidebar__login, login__content, login__header, login__fpw, button__register, buttonSignIn } = styles;
 
     const { isOpen, setIsOpen, type, setType } = useContext(SidebarContext);
-
+    const { setUserId } = useContext(StoreContext);
+    const [isLoginClicked, setIsLoginClicked] = useState(false);
     const [form] = Form.useForm();
 
-    const onFinish = () => {
-        alert("Logged IN !!!");
+    // useEffect(() => {
+    //     getAccountInfoAPI();
+    // }, []);
+
+    const onFinish = async (values) => {
+        // console.log("Check values antd", values);
+        setIsLoginClicked(true);
+        const res = await loginAPI(values.username, values.password);
+        if (res.data) {
+            console.log("check ", res.data);
+            console.log("check user ", values);
+
+            const { id, refreshToken, token } = res.data;
+            //name, values
+            setUserId(id);
+            Cookies.set("token", token);
+            Cookies.set("refreshToken", refreshToken);
+            Cookies.set("userId", id);
+
+            setIsOpen(false);
+            message.success("Logged In!");
+        } else {
+            notification.error({
+                message: "Error",
+                description: JSON.stringify(res.message),
+            });
+        }
+        setIsLoginClicked(false);
     };
     return (
         <div className={sidebar__login}>
@@ -24,16 +54,16 @@ const LoginSidebar = () => {
                         // label="Email"
                         //css
                         label={<label style={{ fontFamily: "Roboto Mono, monospace ", fontSize: "14px" }}>Username or Email</label>}
-                        name="email"
+                        name="username"
                         rules={[
                             {
                                 required: true,
                                 message: "Please input your Email!",
                             },
-                            {
-                                type: "email",
-                                message: "The input is not valid E-mail!",
-                            },
+                            // {
+                            //     type: "email",
+                            //     message: "The input is not valid E-mail!",
+                            // },
                         ]}>
                         <Input style={{ borderRadius: "1px" }} />
                     </Form.Item>
@@ -58,36 +88,28 @@ const LoginSidebar = () => {
                     <Form.Item name="remember" valuePropName="checked" label={null}>
                         <Checkbox style={{ fontFamily: "Roboto Mono, monospace ", fontSize: "14px", marginTop: "10px" }}>Remember me</Checkbox>
                     </Form.Item>
-                    {/* <FormItem> */}
-                    <Button content={"Login"} onClick={() => form.submit()} />
-
+                    <FormItem>
+                        <Button className={buttonSignIn} loading={isLoginClicked} onClick={() => form.submit()}>
+                            SIGN IN
+                        </Button>
+                    </FormItem>
                     <Form.Item>
                         <div className={login__fpw}>
                             <Link to="/register">Lost your Password?</Link>
                         </div>
                     </Form.Item>
-
-                    {/* <Button 
-                        style={{width:"100%"}}
-                            type="primary"
-                            // loading={isLoginClicked}
-                            onClick={() => form.submit()}>
-                            Login
-                        </Button> */}
-                    {/* </FormItem> */}
                 </Form>
 
-                <button
+                <Button
                     className={button__register}
                     content={"Register"}
-                    isPrimary={false}
-                    htmlType="button"
+                    // isPrimary={false}
                     onClick={(e) => {
-                        event.preventDefault();
+                        e.preventDefault();
                         setType("Register");
                     }}>
                     Register
-                </button>
+                </Button>
             </div>
         </div>
     );
