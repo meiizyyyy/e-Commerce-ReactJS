@@ -9,11 +9,13 @@ export const StoreContext = createContext({
 });
 
 export const StoreWrapper = (props) => {
+    const [isAppLoading, setIsAppLoading] = useState(true);
+
+    const [userId, setUserId] = useState(Cookies.get("userId"));
     const [UserInfo, setUserInfo] = useState({
         id: "",
         username: "",
     });
-    const [userId, setUserId] = useState(Cookies.get("userId"));
 
     useEffect(() => {
         const fetchUserInfo = async () => {
@@ -25,7 +27,7 @@ export const StoreWrapper = (props) => {
                     // console.log("Check data account", res.data);
                 }
             } catch (error) {
-                console.error("Lỗi khi lấy thông tin người dùng:", error);
+                console.error(error);
             }
         };
         fetchUserInfo();
@@ -43,5 +45,5 @@ export const StoreWrapper = (props) => {
             message.success("Logged Out!");
         }
     };
-    return <StoreContext.Provider value={{ UserInfo, setUserInfo, handleLogout, setUserId }}>{props.children}</StoreContext.Provider>;
+    return <StoreContext.Provider value={{ UserInfo, setUserInfo, handleLogout, setUserId, isAppLoading, setIsAppLoading }}>{props.children}</StoreContext.Provider>;
 };

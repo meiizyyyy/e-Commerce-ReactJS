@@ -10,7 +10,7 @@ const Footer = () => {
     return (
         <div className={container__footer}>
             <div>
-                <Link to={"/"}>
+                <Link to={"/"} >
                     <img style={{ width: "153px", height: "53px" }} src={Logo} alt="" />
                 </Link>
             </div>

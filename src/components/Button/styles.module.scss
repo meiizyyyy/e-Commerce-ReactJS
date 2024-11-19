@@ -6,9 +6,11 @@
     color: #fff;
     font-size: 14px;
     cursor: pointer;
-    padding: 13px 45px;
+    // padding: 13px 45px;
     border: 1px solid;
     transition: all 0.3s;
+    text-wrap: nowrap;
+    text-align: center;
 }
 
 .button__primary {

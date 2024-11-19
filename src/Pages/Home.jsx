@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Banner from "@c/Banner/Banner";
 import Shipping from "@c/Shipping/Shipping";
 import HighlightTitle from "@c/HighlightTitle/HighlightTitle";
@@ -7,8 +7,12 @@ import HighlightMainProduct from "@c/HighlightMainProduct/HighlightMainProduct";
 import { fetchAllProductAPI } from "../services/api.service.";
 import PopularProductList from "../components/PopularProductList/PopularProductList";
 import SaleOfTheYear from "../components/SaleOfTheYear/SaleOfTheYear";
+import { StoreContext } from "../contexts/Store.context";
+import { Spin } from "antd";
+import { LoadingOutlined } from "@ant-design/icons";
 
 const HomePage = () => {
+    const { isAppLoading, setIsAppLoading } = useContext(StoreContext);
     const [ProductList, setProductList] = useState([]);
 
     useEffect(() => {
@@ -18,12 +22,14 @@ const HomePage = () => {
     useEffect(() => {}, [ProductList]);
 
     const loadProduct = async () => {
-        const res = await fetchAllProductAPI();
+        setIsAppLoading(true);
+        const res = await fetchAllProductAPI(0, 1, 10);
         if (res.data) {
             setProductList(res.data.contents);
             // console.log("check res", res);
-            console.log("Check res data", res.data.contents);
+            // console.log("Check res data", res.data.contents);
         }
+        setIsAppLoading(false);
     };
     //async
     // console.log("Check list", ProductList);
@@ -32,10 +38,17 @@ const HomePage = () => {
             <Banner />
             <MainLayouts>
                 <Shipping />
-                <HighlightTitle />
-                <HighlightMainProduct data={ProductList.slice(0, 2)} />
-                <PopularProductList data={ProductList.slice(2, 10)} />
-                
+                <HighlightTitle mainText={"Our best products"} subText={"don't miss super offers"} />
+                {isAppLoading === true ? (
+                    <div style={{ display: "flex", justifyContent: "center", margin: "120px 0 120px" }}>
+                        <Spin indicator={<LoadingOutlined style={{ fontSize: 40, color: "#333333" }} spin />} />
+                    </div>
+                ) : (
+                    <>
+                        <HighlightMainProduct data={ProductList.slice(0, 2)} />
+                        <PopularProductList data={ProductList.slice(2, 10)} />
+                    </>
+                )}
             </MainLayouts>
             <SaleOfTheYear />
         </>

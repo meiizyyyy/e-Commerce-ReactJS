@@ -1,16 +1,45 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import styles from "./styles.module.scss";
-
-import Youtube from "@icons/svgs/Youtube.svg";
 import Compare from "@icons/svgs/Compare.svg";
 import Favorite from "@icons/svgs/Favorite.svg";
 import Cart from "@icons/svgs/Cart.svg";
 import Eyes from "@icons/svgs/Eyes.svg";
+import cls from "classnames";
+import Button from "../Button/Button";
+import { OurShopContext } from "../../contexts/OurShop.context";
 
-const ProductItem = ({ image, hoverImage, name, price }) => {
-    const { product__card, itemImg, imgOnHover, CTAList, ctaITEM, product__title, product__price } = styles;
+const ProductItem = ({ image, hoverImage, name, size, price, details, isHomePage = true }) => {
+    const { showGrid } = useContext(OurShopContext);
+
+    const [chooseSize, setChooseSize] = useState("");
+
+    const handleChooseSize = (size) => {
+        setChooseSize(size);
+    };
+    const handleClearSize = () => {
+        setChooseSize("");
+    };
+    const {
+        product__card,
+        itemImg,
+        imgOnHover,
+        CTAList,
+        ctaITEM,
+        product__content,
+        product__title,
+        product__price,
+        product__size,
+        size__item,
+        isCenter,
+        product__brand,
+        product__button,
+        product__cardList,
+        isActiveSize,
+        clearSize,
+    } = styles;
+
     return (
-        <div className={product__card}>
+        <div className={showGrid ? product__card : product__cardList}>
             <div className={itemImg}>
                 <img src={image} alt="" />
                 <img className={imgOnHover} src={hoverImage} alt="" />
@@ -29,10 +58,47 @@ const ProductItem = ({ image, hoverImage, name, price }) => {
                     </div>
                 </div>
             </div>
-            <div className={product__title}>
-                <a>{name}</a>
+            <div className={product__content}>
+                {!isHomePage ? (
+                    <>
+                        <div className={product__size}>
+                            {details.size.map((item, index) => {
+                                return (
+                                    <div className={cls(size__item, { [isActiveSize]: chooseSize === item.name })} key={index} onClick={() => handleChooseSize(item.name)}>
+                                        {item.name}
+                                    </div>
+                                );
+                            })}
+                        </div>
+                        {chooseSize && (
+                            <div className={clearSize} onClick={handleClearSize}>
+                                clear
+                            </div>
+                        )}
+                        <div
+                            className={cls(product__title, {
+                                [isCenter]: !isHomePage && showGrid,
+                            })}>
+                            <a>{name}</a>
+                        </div>
+                        <div className={product__brand}>Brand 001</div>
+                        <div className={cls(product__price, { [isCenter]: !isHomePage && showGrid })}>${price}</div>
+                        <div className={product__button}>
+                            <Button styles={{ fontSize: "12px" }} content={"ADD TO CARD"} />
+                        </div>
+                    </>
+                ) : (
+                    <>
+                        <div
+                            className={cls(product__title, {
+                                [isCenter]: !isHomePage,
+                            })}>
+                            <a>{name}</a>
+                        </div>
+                        <div className={cls(product__price, { [isCenter]: !isHomePage })}>${price}</div>
+                    </>
+                )}
             </div>
-            <div className={product__price}>${price}</div>
         </div>
     );
 };

@@ -27,7 +27,7 @@ const CountdownTime = ({ targetDate }) => {
         }, 1000);
 
         return () => clearTimeout(timer);
-    }, );
+    },[timeLeft] );
 
     const formatNumber = (number) => {
         return String(number).padStart(2, "0");

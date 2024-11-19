@@ -1,7 +1,7 @@
 import axios from "./axios.customize";
 
-const fetchAllProductAPI = () => {
-    const URL_BACKEND = `/api/v1/product`;
+const fetchAllProductAPI = (sortType, page, limit) => {
+    const URL_BACKEND = `/api/v1/product?sortType=${sortType}&page=${page}&limit=${limit}`;
     return axios.get(URL_BACKEND);
 };
 

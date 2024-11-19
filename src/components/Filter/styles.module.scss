@@ -1,0 +1,53 @@
+@use "@styles/mixins.module.scss" as mixins;
+@use "@styles/variables.module.scss" as variables;
+
+.filter__container {
+    @include mixins.flex_box_custom(space-between, center, 10px);
+    font-size: 14px;
+    color: variables.$primary-color;
+    padding: 15px 0;
+
+    .filter__leftContent {
+        @include mixins.flex_box_custom(space-between, center, 20px);
+
+        .select__box {
+            border: 1px solid #888888;
+            padding: 0 2.9em 0 1em;
+            cursor: pointer;
+            color: #888888;
+            height: 38px;
+            line-height: 2rem;
+            width: 275px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            text-align: start;
+            cursor: pointer;
+        }
+        .showType {
+            @include mixins.flex_box_custom(space-between, center, 10px);
+            cursor: pointer;
+        }
+    }
+
+    .filter__rightContent {
+        @include mixins.flex_box_custom(space-between, center, 10px);
+
+        span {
+            color: variables.$third-color;
+        }
+        .select__box {
+            padding: 0 5px 0 5px;
+            cursor: pointer;
+            color: #888888;
+            height: 38px;
+            line-height: 2rem;
+            width: 100px;
+            display: block;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            text-align: start;
+        }
+    }
+}

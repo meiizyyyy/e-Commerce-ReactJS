@@ -1,0 +1,26 @@
+@use "@styles/mixins.module.scss" as mixins;
+@use "@styles/variables.module.scss" as variables;
+
+.container__ourShopCountdown {
+    @include mixins.flex_box_custom(center, center, 0px);
+    margin-top: 15px;
+    background-image: url(@images/OurShopCountdown.jpeg);
+    height: 279px;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    flex-direction: column;
+}
+.container__ourShopCountdownTimer {
+    @include mixins.flex_box_custom(center, center, 10px);
+    margin-top: 30px;
+}
+
+.headingline {
+    color: variables.$secondary-color;
+    font-size: 28px;
+    font-weight: 400;
+    text-transform: capitalize;
+    line-height: 40px;
+}

@@ -35,7 +35,6 @@ const MenuTitle = ({ content, href, setIsOpen }) => {
     };
 
     const handleOnHover = () => {
-        console.log(content);
         if (content === "Sign In" && UserInfo.id) {
             setIsShowSubMenu(true);
         }

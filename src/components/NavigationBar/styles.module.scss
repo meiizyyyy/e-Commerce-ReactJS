@@ -1,0 +1,15 @@
+@use "@styles/mixins.module.scss" as mixins;
+@use "@styles/variables.module.scss" as variables;
+
+.navigationBar {
+    @include mixins.flex_box_custom(space-between, center, 10px);
+    font-size: 14px;
+    color: variables.$primary-color;
+    a {
+        color: #888888;
+    }
+    
+    .navigationBar__right {
+        color: #888888;
+    }
+}
