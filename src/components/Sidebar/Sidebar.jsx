@@ -36,7 +36,7 @@ const Sidebar = () => {
         }
     };
 
-    console.log("check type", type);
+    // console.log("check type", type);
 
     return (
         <div className={container__sidebar}>

@@ -64,7 +64,7 @@
     }
     .product__content {
         width: 100%;
-        min-height: 200px;
+
         @include mixins.flex_box_custom(unset, center, 0px);
         flex-direction: column;
 
@@ -186,7 +186,7 @@
     .product__content {
         @include mixins.flex_box_custom(flex-start, center, 0px);
         flex-direction: column;
-        min-height: 200px;
+
         .product__title {
             margin-top: 10px;
 

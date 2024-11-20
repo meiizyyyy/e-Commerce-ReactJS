@@ -10,7 +10,7 @@ export const StoreContext = createContext({
 
 export const StoreWrapper = (props) => {
     const [isAppLoading, setIsAppLoading] = useState(true);
-
+    const [isButtonLoading, setIsButtonLoading] = useState(false);
     const [userId, setUserId] = useState(Cookies.get("userId"));
     const [UserInfo, setUserInfo] = useState({
         id: "",
@@ -45,5 +45,9 @@ export const StoreWrapper = (props) => {
             message.success("Logged Out!");
         }
     };
-    return <StoreContext.Provider value={{ UserInfo, setUserInfo, handleLogout, setUserId, isAppLoading, setIsAppLoading }}>{props.children}</StoreContext.Provider>;
+    return (
+        <StoreContext.Provider value={{ UserInfo, setUserInfo, handleLogout, setUserId, isAppLoading, setIsAppLoading, isButtonLoading, setIsButtonLoading }}>
+            {props.children}
+        </StoreContext.Provider>
+    );
 };

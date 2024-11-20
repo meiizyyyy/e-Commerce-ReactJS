@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import MainLayouts from "@c/Layouts/Layouts";
 import NavigationBar from "@c/NavigationBar/NavigationBar";
-import { Link } from "react-router-dom";
+import { Link, ScrollRestoration } from "react-router-dom";
 import OurShopCountdownBanner from "@c/OurShopCountdownBanner/OurShopCountdownBanner";
 import Filter from "@c/Filter/Filter";
 import { OurShopContext } from "../contexts/OurShop.context";
@@ -11,9 +11,9 @@ import { StoreContext } from "../contexts/Store.context";
 import { Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 const OurShopPage = () => {
-    const { isAppLoading, setIsAppLoading } = useContext(StoreContext);
+    const { isAppLoading, setIsAppLoading, isButtonLoading, setIsButtonLoading } = useContext(StoreContext);
 
-    const { sortID, showID, showGrid } = useContext(OurShopContext);
+    const { sortID, showID, showGrid, setTotal, total, page, setPage, setShowID } = useContext(OurShopContext);
     const [ProductList, setProductList] = useState([]);
 
     useEffect(() => {
@@ -24,9 +24,25 @@ const OurShopPage = () => {
         setIsAppLoading(true);
         const res = await fetchAllProductAPI(sortID, 1, showID);
         if (res.data) {
+            setPage(1);
+            setShowID(res.data.limit);
+            setTotal(res.data.total);
             setProductList(res.data.contents);
         }
         setIsAppLoading(false);
+    };
+
+    const handleLoadMoreProduct = async () => {
+        setIsButtonLoading(true);
+        const res = await fetchAllProductAPI(sortID, +page + 1, showID);
+        if (res.data) {
+            setTotal(res.data.total);
+            setPage(+res.data.page);
+            setProductList((prev) => {
+                return [...prev, ...res.data.contents];
+            });
+        }
+        setIsButtonLoading(false);
     };
 
     return (
@@ -50,10 +66,11 @@ const OurShopPage = () => {
                     </div>
                 ) : (
                     <>
-                        <OurShopProducts data={ProductList} />
+                        <OurShopProducts data={ProductList} handleLoadMoreProduct={handleLoadMoreProduct} />
                     </>
                 )}
             </div>
+            <ScrollRestoration />
         </MainLayouts>
     );
 };

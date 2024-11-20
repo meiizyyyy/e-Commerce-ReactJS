@@ -48,6 +48,9 @@ export const OurShopWrapper = (props) => {
     const [sortID, setSortID] = useState(0);
     const [showID, setShowID] = useState(8);
     const [showGrid, setShowGrid] = useState(true);
+    const [page, setPage] = useState(1);
+    const [total, setTotal] = useState(0);
+
     const values = {
         sortOption,
         showOption,
@@ -57,6 +60,10 @@ export const OurShopWrapper = (props) => {
         sortID,
         showID,
         showGrid,
+        page,
+        setPage,
+        total,
+        setTotal,
     };
 
     return <OurShopContext.Provider value={values}>{props.children}</OurShopContext.Provider>;

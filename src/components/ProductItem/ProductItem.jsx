@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./styles.module.scss";
 import Compare from "@icons/svgs/Compare.svg";
 import Favorite from "@icons/svgs/Favorite.svg";
@@ -9,7 +9,8 @@ import Button from "../Button/Button";
 import { OurShopContext } from "../../contexts/OurShop.context";
 
 const ProductItem = ({ image, hoverImage, name, size, price, details, isHomePage = true }) => {
-    const { showGrid } = useContext(OurShopContext);
+    const { showGrid, setShowGrid } = useContext(OurShopContext);
+
 
     const [chooseSize, setChooseSize] = useState("");
 
@@ -38,6 +39,13 @@ const ProductItem = ({ image, hoverImage, name, size, price, details, isHomePage
         clearSize,
     } = styles;
 
+    useEffect(() => {
+        if (isHomePage) {
+            setShowGrid(true);
+        }
+    }, [isHomePage]);
+
+    // console.log("Check type list", showGrid);
     return (
         <div className={showGrid ? product__card : product__cardList}>
             <div className={itemImg}>

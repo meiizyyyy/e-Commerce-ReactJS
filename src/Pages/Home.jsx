@@ -10,9 +10,12 @@ import SaleOfTheYear from "../components/SaleOfTheYear/SaleOfTheYear";
 import { StoreContext } from "../contexts/Store.context";
 import { Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
+import { ScrollRestoration } from "react-router-dom";
+import { OurShopContext } from "../contexts/OurShop.context";
 
 const HomePage = () => {
     const { isAppLoading, setIsAppLoading } = useContext(StoreContext);
+    const { sortID, setSortID, showID, showGrid, setTotal, total, page, setPage, setShowID, setShowGrid } = useContext(OurShopContext);
     const [ProductList, setProductList] = useState([]);
 
     useEffect(() => {
@@ -26,6 +29,9 @@ const HomePage = () => {
         const res = await fetchAllProductAPI(0, 1, 10);
         if (res.data) {
             setProductList(res.data.contents);
+            setSortID(0);
+            setShowGrid(true);
+            setShowID(8);
             // console.log("check res", res);
             // console.log("Check res data", res.data.contents);
         }
@@ -51,6 +57,7 @@ const HomePage = () => {
                 )}
             </MainLayouts>
             <SaleOfTheYear />
+            <ScrollRestoration />
         </>
     );
 };
