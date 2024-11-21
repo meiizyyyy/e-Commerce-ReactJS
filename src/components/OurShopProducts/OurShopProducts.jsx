@@ -10,7 +10,7 @@ import Button from "../Button/Button";
 const OurShopProducts = ({ data, handleLoadMoreProduct }) => {
     const { showGrid, total } = useContext(OurShopContext);
     const { isButtonLoading, setIsButtonLoading } = useContext(StoreContext);
-    const { container__highlight, container__product, container__productList,btn__loading} = styles;
+    const { container__highlight, container__product, container__productList, btn__loading } = styles;
     return (
         <>
             <div className={showGrid ? container__product : container__productList}>

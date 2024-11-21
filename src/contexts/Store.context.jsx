@@ -16,7 +16,7 @@ export const StoreWrapper = (props) => {
         id: "",
         username: "",
     });
-
+    const [CartList, setCartList] = useState([]);
     useEffect(() => {
         const fetchUserInfo = async () => {
             if (!userId) return;
@@ -46,7 +46,8 @@ export const StoreWrapper = (props) => {
         }
     };
     return (
-        <StoreContext.Provider value={{ UserInfo, setUserInfo, handleLogout, setUserId, isAppLoading, setIsAppLoading, isButtonLoading, setIsButtonLoading }}>
+        <StoreContext.Provider
+            value={{ UserInfo, setUserInfo, handleLogout, setUserId, isAppLoading, setIsAppLoading, isButtonLoading, setIsButtonLoading, CartList, setCartList }}>
             {props.children}
         </StoreContext.Provider>
     );

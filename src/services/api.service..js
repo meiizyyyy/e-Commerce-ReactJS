@@ -29,4 +29,21 @@ const getAccountInfoAPI = (userId) => {
     const URL_BACKEND = `/api/v1/user/info/${userId}`;
     return axios.get(URL_BACKEND);
 };
-export { fetchAllProductAPI, loginAPI, registerAPI, getAccountInfoAPI };
+
+const addToCartAPI = (userId, productId, quantity, size) => {
+    const URL_BACKEND = `/api/v1/cart`;
+    const data = {
+        userId: userId,
+        productId: productId,
+        quantity: quantity,
+        size: size,
+    };
+    return axios.post(URL_BACKEND, data);
+};
+
+const getCartAPI = (userId) => {
+    const URL_BACKEND = `/api/v1/cart/${userId}`;
+    return axios.get(URL_BACKEND);
+};
+
+export { fetchAllProductAPI, loginAPI, registerAPI, getAccountInfoAPI, addToCartAPI, getCartAPI };

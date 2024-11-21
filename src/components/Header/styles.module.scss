@@ -99,3 +99,20 @@
     transform: scale(1);
     opacity: 1;
 }
+
+.cartBox {
+    position: relative;
+
+    .cartQuantity {
+        font-size: 10px;
+        position: absolute;
+        top: -5px;
+        right: -10px;
+        background: variables.$primary-color;
+        color: #fff;
+        border-radius: 50%;
+        width: 15px;
+        height: 15px;
+        @include mixins.flex_box_custom(center, center, 0px);
+    }
+}

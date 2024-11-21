@@ -6,12 +6,17 @@ import Cart from "@icons/svgs/Cart.svg";
 import Eyes from "@icons/svgs/Eyes.svg";
 import cls from "classnames";
 import Button from "../Button/Button";
+import Cookies from "js-cookie";
 import { OurShopContext } from "../../contexts/OurShop.context";
+import { SidebarContext } from "../../contexts/Sidebar.context";
+import { message } from "antd";
+import { addToCartAPI, getCartAPI } from "../../services/api.service.";
+import { StoreContext } from "../../contexts/Store.context";
 
 const ProductItem = ({ image, hoverImage, name, size, price, details, isHomePage = true }) => {
     const { showGrid, setShowGrid } = useContext(OurShopContext);
-
-
+    const { isOpen, setIsOpen, type, setType } = useContext(SidebarContext);
+    const { CartList, setCartList } = useContext(StoreContext);
     const [chooseSize, setChooseSize] = useState("");
 
     const handleChooseSize = (size) => {
@@ -20,6 +25,46 @@ const ProductItem = ({ image, hoverImage, name, size, price, details, isHomePage
     const handleClearSize = () => {
         setChooseSize("");
     };
+
+    const handleAddToCart = async () => {
+        const userId = Cookies.get("userId");
+        if (!userId) {
+            message.info({
+                content: "Please login!",
+            });
+            setType("login");
+            setIsOpen(true);
+            return;
+        }
+
+        if (!chooseSize) {
+            message.warning({
+                content: "Please choose size!",
+            });
+            return;
+        }
+
+        const res = await addToCartAPI(userId, details._id, 1, chooseSize);
+        if (res.data) {
+            message.success({
+                content: res.data.msg,
+            });
+            console.log(userId);
+            console.log(res.data);
+            setType("cart");
+            setIsOpen(true);
+            const resCart = await getCartAPI(userId);
+            if (resCart.data) {
+                setCartList(resCart.data);
+            }
+        } else {
+            message.error({
+                content: "Something went wrong :( ",
+            });
+        }
+    };
+
+    console.log("Check cart list", CartList);
     const {
         product__card,
         itemImg,
@@ -92,7 +137,7 @@ const ProductItem = ({ image, hoverImage, name, size, price, details, isHomePage
                         <div className={product__brand}>Brand 001</div>
                         <div className={cls(product__price, { [isCenter]: !isHomePage && showGrid })}>${price}</div>
                         <div className={product__button}>
-                            <Button styles={{ fontSize: "12px" }} content={"ADD TO CARD"} />
+                            <Button styles={{ fontSize: "12px" }} content={"ADD TO CARD"} onClick={handleAddToCart} />
                         </div>
                     </>
                 ) : (

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import styles from "./styles.module.scss";
 import { SidebarContext } from "../../contexts/Sidebar.context";
 import classNames from "classnames";
@@ -8,6 +8,8 @@ import RegisterSidebar from "./Contents/Register.sidebar/Register.Sidebar";
 import CompareSideBar from "./Contents/Compare.sidebar/Compare.SideBar";
 import WishlistSideBar from "./Contents/Wishlist.sidebar/WishList.SideBar";
 import CartSideBar from "./Contents/Cart.sidebar/Cart.SideBar";
+import Cookies from "js-cookie";
+import { getCartAPI } from "../../services/api.service.";
 
 const Sidebar = () => {
     const { container__sidebar, sidebar__overlay, sidebar__content, slider, sidebar__close, sidebar__mainContent } = styles;

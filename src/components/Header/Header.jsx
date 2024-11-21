@@ -14,15 +14,17 @@ import { TfiReload } from "react-icons/tfi";
 import { GrCart, GrFavorite } from "react-icons/gr";
 import { BsCart2 } from "react-icons/bs";
 import { PiShoppingCart } from "react-icons/pi";
+import { StoreContext } from "../../contexts/Store.context";
 
 const Header = (props) => {
-    const { container, container__header, header__sticky, container__headerIcon, container__headerBox, container__headerMenu } = styles;
+    const { container, container__header, header__sticky, container__headerIcon, container__headerBox, container__headerMenu, cartBox, cartQuantity } = styles;
     const [scrollDirection, setScrollDirection] = useState();
     const [translateYPos, setTranslateYPos] = useState(80);
     const [scrollPosition, setScrollPosition] = useState(0);
     const [stickyOn, setStickyOn] = useState(false);
 
     const { isOpen, setIsOpen, type, setType } = useContext(SidebarContext);
+    const { CartList } = useContext(StoreContext);
 
     //Có thể làm React Custom Hook
     const prevScrPos = useRef();
@@ -132,11 +134,14 @@ const Header = (props) => {
                             }}
                         />
 
-                        <GrCart
-                            onClick={() => {
-                                handleOpenSidebar("cart");
-                            }}
-                        />
+                        <div className={cartBox}>
+                            <GrCart
+                                onClick={() => {
+                                    handleOpenSidebar("cart");
+                                }}
+                            />
+                            <div className={cartQuantity}>{CartList.length}</div>
+                        </div>
                     </div>
                 </div>
             </div>
