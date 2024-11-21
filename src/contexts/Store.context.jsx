@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import Cookies from "js-cookie";
-import { getAccountInfoAPI, getCartAPI } from "../services/api.service.";
+import { getAccountInfoAPI, getCartAPI } from "@services/api.service.";
 import { message } from "antd";
 
 export const StoreContext = createContext({

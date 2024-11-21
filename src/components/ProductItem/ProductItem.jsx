@@ -5,15 +5,15 @@ import Favorite from "@icons/svgs/Favorite.svg";
 import Cart from "@icons/svgs/Cart.svg";
 import Eyes from "@icons/svgs/Eyes.svg";
 import cls from "classnames";
-import Button from "../Button/Button";
+import Button from "@c/Button/Button";
 import Cookies from "js-cookie";
-import { OurShopContext } from "../../contexts/OurShop.context";
-import { SidebarContext } from "../../contexts/Sidebar.context";
+import { OurShopContext } from "@contexts/OurShop.context";
+import { SidebarContext } from "@contexts/Sidebar.context";
 import { message } from "antd";
-import { addToCartAPI, getCartAPI } from "../../services/api.service.";
-import { StoreContext } from "../../contexts/Store.context";
+import { addToCartAPI, getCartAPI } from "@services/api.service.";
+import { StoreContext } from "@contexts/Store.context";
 import { AiOutlineLoading } from "react-icons/ai";
-import Loading from "../Loading/Loading";
+import Loading from "@c/Loading/Loading";
 
 const ProductItem = ({ image, hoverImage, name, size, price, details, isHomePage = true }) => {
     const { showGrid, setShowGrid } = useContext(OurShopContext);
@@ -69,7 +69,7 @@ const ProductItem = ({ image, hoverImage, name, size, price, details, isHomePage
         setIsButtonLoading(false);
     };
 
-    console.log("Check cart list", CartList);
+    // console.log("Check cart list", CartList);
     const {
         product__card,
         itemImg,

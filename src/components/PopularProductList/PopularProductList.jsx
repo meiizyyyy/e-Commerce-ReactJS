@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./styles.module.scss";
-import ProductItem from "../ProductItem/ProductItem";
+import ProductItem from "@c/ProductItem/ProductItem";
 
 const PopularProductList = (props) => {
 

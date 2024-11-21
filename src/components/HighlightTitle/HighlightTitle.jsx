@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./styles.module.scss";
-import MainLayouts from "../Layouts/Layouts";
+import MainLayouts from "@c/Layouts/Layouts";
 const HighlightTitle = ({ mainText, subText }) => {
     const { container, container__headline, container__headline_main, container__headline_desc } = styles;
 

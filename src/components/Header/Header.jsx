@@ -4,17 +4,13 @@ import { dataBoxIcon, dataMenu } from "./data";
 import styles from "./styles.module.scss";
 import MenuTitle from "./Menu/MenuTitle";
 import Logo from "@images/Logo-retina.png";
-import Cart from "@icons/svgs/Cart.svg";
-import Favorite from "@icons/svgs/Favorite.svg";
-import Compare from "@icons/svgs/Compare.svg";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
-import { SidebarContext } from "../../contexts/Sidebar.context";
+import { SidebarContext } from "@contexts/Sidebar.context";
 import { TfiReload } from "react-icons/tfi";
 import { GrCart, GrFavorite } from "react-icons/gr";
-import { BsCart2 } from "react-icons/bs";
-import { PiShoppingCart } from "react-icons/pi";
-import { StoreContext } from "../../contexts/Store.context";
+
+import { StoreContext } from "@contexts/Store.context";
 
 const Header = (props) => {
     const { container, container__header, header__sticky, container__headerIcon, container__headerBox, container__headerMenu, cartBox, cartQuantity } = styles;

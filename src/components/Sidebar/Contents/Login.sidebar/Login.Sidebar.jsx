@@ -4,10 +4,9 @@ import { Checkbox, Col, Divider, Form, Input, Row, Button, message, notification
 import FormItem from "antd/es/form/FormItem";
 import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
-// import Button from "@c/Button/Button";
-import { SidebarContext } from "../../../../contexts/Sidebar.context";
-import { getAccountInfoAPI, getCartAPI, loginAPI } from "../../../../services/api.service.";
-import { StoreContext } from "../../../../contexts/Store.context";
+import { SidebarContext } from "@contexts/Sidebar.context";
+import { getAccountInfoAPI, getCartAPI, loginAPI } from "@services/api.service.";
+import { StoreContext } from "@contexts/Store.context";
 const LoginSidebar = () => {
     const { sidebar__login, login__content, login__header, login__fpw, button__register, buttonSignIn } = styles;
 

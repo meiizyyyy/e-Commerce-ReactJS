@@ -1,7 +1,7 @@
 import React from "react";
-import CountdownTime from "../CountdownTime/CountdownTime";
+import CountdownTime from "@c/CountdownTime/CountdownTime";
 import styles from "./styles.module.scss";
-import Button from "../Button/Button";
+import Button from "@c/Button/Button";
 
 const OurShopCountdownBanner = () => {
     const { container__ourShopCountdown,container__ourShopCountdownTimer, headingline } = styles;

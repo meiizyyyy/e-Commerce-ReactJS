@@ -1,7 +1,7 @@
 import React from "react";
 import MainLayouts from "../Layouts/Layouts";
 import Item from "./Item/Item";
-import { shipping } from "./shipping_constaint";
+import { shipping } from "./shipping_constant";
 import styles from "./styles.module.scss";
 const Shipping = () => {
     const { container__shipping } = styles;

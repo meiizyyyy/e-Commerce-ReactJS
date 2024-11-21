@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "./styles.module.scss";
-import SidebarHeader from "../../Components/SidebarHeader/SidebarHeader";
+import SidebarHeader from "@c/SidebarHeader/SidebarHeader";
 import { TfiReload } from "react-icons/tfi";
 import Button from "@c/Button/Button";
-import SidebarProductItem from "../../Components/SidebarProductItem/SidebarProductItem";
+import SidebarProductItem from "@c/SidebarProductItem/SidebarProductItem";
 
 const CompareSideBar = () => {
     const { container, sidebar__compare, compare__header, compare__content, compare__button } = styles;

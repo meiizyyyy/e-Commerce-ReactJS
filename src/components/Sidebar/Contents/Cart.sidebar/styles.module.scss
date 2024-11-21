@@ -2,13 +2,24 @@
 @use "@styles/variables.module.scss" as variables;
 
 .container {
-    @include mixins.flex_box_custom(space-between, center, 5px);
+    @include mixins.flex_box_custom(normal, center, 5px);
     flex-direction: column;
     height: 100vh;
     width: 100%;
     .cart__header {
         font-size: 18px;
     }
+
+    .noItem__content {
+        margin-top: 10px;
+        font-size: 14px;
+        color: variables.$secondary-color;
+    }
+    .noItem__button {
+        font-size: 12px;
+        margin-top: 20px;
+    }
+
     .sidebar__cart {
         @include mixins.flex_box_custom(normal, center, 50px);
         flex-direction: column;

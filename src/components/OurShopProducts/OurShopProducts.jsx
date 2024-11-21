@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
-import ProductItem from "../ProductItem/ProductItem";
+import ProductItem from "@c/ProductItem/ProductItem";
 import styles from "./styles.module.scss";
-import { OurShopContext } from "../../contexts/OurShop.context";
+import { OurShopContext } from "@contexts/OurShop.context";
 
-import { StoreContext } from "../../contexts/Store.context";
+import { StoreContext } from ".@contexts/Store.context";
 import { AiOutlineLoading } from "react-icons/ai";
-import Button from "../Button/Button";
+import Button from "@c/Button/Button";
 
 const OurShopProducts = ({ data, handleLoadMoreProduct }) => {
     const { showGrid, total } = useContext(OurShopContext);

@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
 import styles from "../styles.module.scss";
 import { Link } from "react-router-dom";
-import { SidebarContext } from "../../../contexts/Sidebar.context";
-import { StoreContext } from "../../../contexts/Store.context";
+import { SidebarContext } from "@contexts/Sidebar.context";
+import { StoreContext } from "@contexts/Store.context";
 import Cookies from "js-cookie";
 
 const MenuTitle = ({ content, href, setIsOpen }) => {
@@ -10,7 +10,7 @@ const MenuTitle = ({ content, href, setIsOpen }) => {
     const { header__menu, subMenu } = styles;
 
     const { setType } = useContext(SidebarContext);
-    const { UserInfo, setUserInfo, handleLogout ,  } = useContext(StoreContext);
+    const { UserInfo, setUserInfo, handleLogout } = useContext(StoreContext);
 
     const handleClick = (e) => {
         if (content === "Sign In" && UserInfo.id === "") {

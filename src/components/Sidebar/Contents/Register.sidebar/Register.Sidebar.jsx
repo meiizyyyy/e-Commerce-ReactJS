@@ -4,8 +4,8 @@ import { Checkbox, Col, Divider, Form, Input, Row, Button, notification } from "
 import FormItem from "antd/es/form/FormItem";
 import { Link } from "react-router-dom";
 // import Button from "@c/Button/Button";
-import { SidebarContext } from "../../../../contexts/Sidebar.context";
-import { registerAPI } from "../../../../services/api.service.";
+import { SidebarContext } from "@contexts/Sidebar.context";
+import { registerAPI } from "@services/api.service.";
 import { AxiosError } from "axios";
 
 const RegisterSidebar = () => {

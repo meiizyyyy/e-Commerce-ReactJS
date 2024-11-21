@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-// import { dataBoxIcon } from "../Header/data";
 import styles from "./styles.module.scss";
 const CountdownTime = ({ targetDate }) => {
     const { box, title } = styles;

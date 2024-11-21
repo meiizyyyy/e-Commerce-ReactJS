@@ -1,7 +1,7 @@
 import React from "react";
-import MainLayouts from "../components/Layouts/Layouts";
-import HighlightTitle from "../components/HighlightTitle/HighlightTitle";
-import NavigationBar from "../components/NavigationBar/NavigationBar";
+import MainLayouts from "@c/Layouts/Layouts";
+import HighlightTitle from "@c/HighlightTitle/HighlightTitle";
+import NavigationBar from "@c/NavigationBar/NavigationBar";
 import { Link } from "react-router-dom";
 
 const AboutUsPage = () => {

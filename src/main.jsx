@@ -7,15 +7,14 @@ import "normalize.css";
 import "@styles/main.module.scss";
 
 import App from "./App.jsx";
-import ElementsPage from "./Pages/Elements.jsx";
-import AboutUsPage from "./Pages/AboutUs.jsx";
-import ContactsPage from "./Pages/Contacts.jsx";
-import OurShopPage from "./Pages/OurShop.jsx";
-import Banner from "./components/Banner/Banner.jsx";
-import HomePage from "./Pages/Home.jsx";
-import { SidebarContext, SidebarWrapper } from "./contexts/Sidebar.context.jsx";
-import { StoreWrapper } from "./contexts/Store.context.jsx";
-import { OurShopWrapper } from "./contexts/OurShop.context.jsx";
+import ElementsPage from "@/Pages/Elements.jsx";
+import AboutUsPage from "@/Pages/AboutUs.jsx";
+import ContactsPage from "@/Pages/Contacts.jsx";
+import OurShopPage from "@/Pages/OurShop.jsx";
+import { SidebarContext, SidebarWrapper } from "@contexts/Sidebar.context.jsx";
+import { StoreWrapper } from "@contexts/Store.context.jsx";
+import { OurShopWrapper } from "@contexts/OurShop.context.jsx";
+import CartPage from "@/Pages/Cart.jsx";
 
 const router = createBrowserRouter([
     {
@@ -37,6 +36,10 @@ const router = createBrowserRouter([
             {
                 path: "/OurShop",
                 element: <OurShopPage />,
+            },
+            {
+                path: "/Cart",
+                element: <CartPage />,
             },
         ],
     },

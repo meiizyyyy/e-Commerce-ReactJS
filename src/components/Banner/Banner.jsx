@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./styles.module.scss";
-import Button from "../Button/Button";
+import Button from "@c/Button/Button";
 
 const Banner = () => {
     const { container, container__content, content__main, container_desc } = styles;

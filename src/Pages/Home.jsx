@@ -4,14 +4,14 @@ import Shipping from "@c/Shipping/Shipping";
 import HighlightTitle from "@c/HighlightTitle/HighlightTitle";
 import MainLayouts from "@c/Layouts/Layouts";
 import HighlightMainProduct from "@c/HighlightMainProduct/HighlightMainProduct";
-import { fetchAllProductAPI } from "../services/api.service.";
-import PopularProductList from "../components/PopularProductList/PopularProductList";
-import SaleOfTheYear from "../components/SaleOfTheYear/SaleOfTheYear";
-import { StoreContext } from "../contexts/Store.context";
+import { fetchAllProductAPI } from "@services/api.service.";
+import PopularProductList from "@c/PopularProductList/PopularProductList";
+import SaleOfTheYear from "@c/SaleOfTheYear/SaleOfTheYear";
+import { StoreContext } from "@contexts/Store.context";
 import { Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 import { ScrollRestoration } from "react-router-dom";
-import { OurShopContext } from "../contexts/OurShop.context";
+import { OurShopContext } from "@contexts/OurShop.context";
 
 const HomePage = () => {
     const { isAppLoading, setIsAppLoading } = useContext(StoreContext);

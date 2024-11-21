@@ -2,16 +2,14 @@ import React, { useContext } from "react";
 import styles from "./styles.module.scss";
 import { TfiLayoutGrid4 } from "react-icons/tfi";
 import { CiCircleList } from "react-icons/ci";
-import { OurShopContext } from "../../contexts/OurShop.context";
+import { OurShopContext } from "@contexts/OurShop.context";
 import SelectBox from "./SelectBox";
 const Filter = () => {
     const { filter__container, filter__leftContent, filter__rightContent, select__box, showType } = styles;
 
     const { showOption, sortOption, setSortID, setShowID, setShowGrid, showGrid } = useContext(OurShopContext);
 
-    // console.log(showOption);
-    // console.log(sortOption);
-    console.log(showGrid);
+
 
     const handleSelectedValue = (value, type) => {
         if (type === "sort") {

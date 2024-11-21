@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./styles.module.scss";
-import CountdownTime from "../CountdownTime/CountdownTime";
-import Button from "../Button/Button";
+import CountdownTime from "@c/CountdownTime/CountdownTime";
+import Button from "@c/Button/Button";
 
 const BannerCountdown = () => {
     const { container__bannerCountdown, container__items, headingline } = styles;

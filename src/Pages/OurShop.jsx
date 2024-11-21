@@ -4,10 +4,10 @@ import NavigationBar from "@c/NavigationBar/NavigationBar";
 import { Link, ScrollRestoration } from "react-router-dom";
 import OurShopCountdownBanner from "@c/OurShopCountdownBanner/OurShopCountdownBanner";
 import Filter from "@c/Filter/Filter";
-import { OurShopContext } from "../contexts/OurShop.context";
-import { fetchAllProductAPI } from "../services/api.service.";
-import OurShopProducts from "../components/OurShopProducts/OurShopProducts";
-import { StoreContext } from "../contexts/Store.context";
+import { OurShopContext } from "@contexts/OurShop.context";
+import { fetchAllProductAPI } from "@services/api.service.";
+import OurShopProducts from "@c/OurShopProducts/OurShopProducts";
+import { StoreContext } from "@contexts/Store.context";
 import { Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 const OurShopPage = () => {

@@ -1,8 +1,7 @@
 import React from "react";
-import CountdownTime from "../CountdownTime/CountdownTime";
 import styles from "./styles.module.scss";
 import BannerCountdown from "@c/BannerCountdown/BannerCountdown";
-import ProductItem from "../ProductItem/ProductItem";
+import ProductItem from "@c/ProductItem/ProductItem";
 const HighlightMainProduct = (props) => {
     const { data } = props;
     const { container__highlight, container__product } = styles;
