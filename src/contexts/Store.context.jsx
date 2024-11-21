@@ -10,6 +10,7 @@ export const StoreContext = createContext({
 
 export const StoreWrapper = (props) => {
     const [isAppLoading, setIsAppLoading] = useState(true);
+    const [isSidebarLoading, setIsSidebarLoading] = useState(false);
     const [isButtonLoading, setIsButtonLoading] = useState(false);
     const [userId, setUserId] = useState(Cookies.get("userId"));
     const [UserInfo, setUserInfo] = useState({
@@ -19,12 +20,15 @@ export const StoreWrapper = (props) => {
     const [CartList, setCartList] = useState([]);
 
     const handleGetCartList = async (userId) => {
+        setIsSidebarLoading(true);
         const resCart = await getCartAPI(userId);
         if (resCart.data) {
             setCartList(resCart.data);
         }
+        setIsSidebarLoading(false);
     };
 
+    //reload
     useEffect(() => {
         handleGetCartList(userId);
     }, []);
@@ -72,6 +76,8 @@ export const StoreWrapper = (props) => {
                 CartList,
                 setCartList,
                 handleGetCartList,
+                isSidebarLoading,
+                setIsSidebarLoading,
             }}>
             {props.children}
         </StoreContext.Provider>

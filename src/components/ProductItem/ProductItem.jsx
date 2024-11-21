@@ -12,11 +12,14 @@ import { SidebarContext } from "../../contexts/Sidebar.context";
 import { message } from "antd";
 import { addToCartAPI, getCartAPI } from "../../services/api.service.";
 import { StoreContext } from "../../contexts/Store.context";
+import { AiOutlineLoading } from "react-icons/ai";
+import Loading from "../Loading/Loading";
 
 const ProductItem = ({ image, hoverImage, name, size, price, details, isHomePage = true }) => {
     const { showGrid, setShowGrid } = useContext(OurShopContext);
     const { isOpen, setIsOpen, type, setType } = useContext(SidebarContext);
     const { handleGetCartList, CartList, setCartList } = useContext(StoreContext);
+    const [isButtonLoading, setIsButtonLoading] = useState(false);
     const [chooseSize, setChooseSize] = useState("");
 
     const handleChooseSize = (size) => {
@@ -27,6 +30,7 @@ const ProductItem = ({ image, hoverImage, name, size, price, details, isHomePage
     };
 
     const handleAddToCart = async () => {
+        setIsButtonLoading(true);
         const userId = Cookies.get("userId");
         if (!userId) {
             message.info({
@@ -34,6 +38,7 @@ const ProductItem = ({ image, hoverImage, name, size, price, details, isHomePage
             });
             setType("login");
             setIsOpen(true);
+            setIsButtonLoading(false);
             return;
         }
 
@@ -41,6 +46,7 @@ const ProductItem = ({ image, hoverImage, name, size, price, details, isHomePage
             message.warning({
                 content: "Please choose size!",
             });
+            setIsButtonLoading(false);
             return;
         }
 
@@ -60,6 +66,7 @@ const ProductItem = ({ image, hoverImage, name, size, price, details, isHomePage
                 content: "Something went wrong :( ",
             });
         }
+        setIsButtonLoading(false);
     };
 
     console.log("Check cart list", CartList);
@@ -80,6 +87,7 @@ const ProductItem = ({ image, hoverImage, name, size, price, details, isHomePage
         product__cardList,
         isActiveSize,
         clearSize,
+        btn__loading,
     } = styles;
 
     useEffect(() => {
@@ -135,7 +143,7 @@ const ProductItem = ({ image, hoverImage, name, size, price, details, isHomePage
                         <div className={product__brand}>Brand 001</div>
                         <div className={cls(product__price, { [isCenter]: !isHomePage && showGrid })}>${price}</div>
                         <div className={product__button}>
-                            <Button styles={{ fontSize: "12px" }} content={"ADD TO CARD"} onClick={handleAddToCart} />
+                            <Button styles={{ fontSize: "12px" }} content={isButtonLoading ? <Loading /> : "ADD TO CARD"} onClick={handleAddToCart} />
                         </div>
                     </>
                 ) : (

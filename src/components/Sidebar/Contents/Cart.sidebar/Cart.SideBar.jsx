@@ -6,11 +6,11 @@ import Button from "@c/Button/Button";
 import SidebarProductItem from "../../Components/SidebarProductItem/SidebarProductItem";
 import { StoreContext } from "../../../../contexts/Store.context";
 import { getCartAPI } from "../../../../services/api.service.";
+import Loading from "../../../Loading/Loading";
 
 const CartSideBar = ({}) => {
-    const { container, sidebar__cart, cart__header, cart__content, cart__button, card__total, cart__totalPrice } = styles;
-    const { handleGetCartList, UserInfo, CartList, setCartList } = useContext(StoreContext);
-
+    const { container, sidebar__cart, cart__header, cart__content, cart__button, card__total, cart__totalPrice, loading__overlay } = styles;
+    const { handleGetCartList, UserInfo, CartList, setCartList, isSidebarLoading, setIsSidebarLoading } = useContext(StoreContext);
     const userId = UserInfo.id;
 
     useEffect(() => {
@@ -24,34 +24,44 @@ const CartSideBar = ({}) => {
             <div className={cart__header}>
                 <SidebarHeader icon={<GrCart />} title="CART" />
             </div>
-            <div className={sidebar__cart}>
-                <div className={cart__content}>
-                    {CartList.map((item, index) => {
-                        return (
-                            <SidebarProductItem
-                                key={item.productId}
-                                name={item.name}
-                                images={item.images[0]}
-                                size={item.size}
-                                price={item.price}
-                                quantity={item.quantity}
-                                sku={item.sku}
-                            />
-                        );
-                    })}
+            {isSidebarLoading ? (
+                <div className={loading__overlay}>
+                    <Loading />
                 </div>
-            </div>
+            ) : (
+                <>
+                    <div className={sidebar__cart}>
+                        <div className={cart__content}>
+                            {CartList.map((item, index) => {
+                                return (
+                                    <SidebarProductItem
+                                        key={item.productId}
+                                        userId={item.userId}
+                                        productId={item.productId}
+                                        name={item.name}
+                                        images={item.images[0]}
+                                        size={item.size}
+                                        price={item.price}
+                                        quantity={item.quantity}
+                                        sku={item.sku}
+                                    />
+                                );
+                            })}
+                        </div>
+                    </div>
 
-            <div className={card__total}>
-                <div className={cart__totalPrice}>
-                    <p>Sub Total</p>
-                    <p>$123</p>
-                </div>
-                <div className={cart__button}>
-                    <Button content={"VIEW CART"} />
-                    <Button content={"CHECK OUT"} isPrimary={false} />
-                </div>
-            </div>
+                    <div className={card__total}>
+                        <div className={cart__totalPrice}>
+                            <p>Sub Total</p>
+                            <p>$123</p>
+                        </div>
+                        <div className={cart__button}>
+                            <Button content={"VIEW CART"} />
+                            <Button content={"CHECK OUT"} isPrimary={false} />
+                        </div>
+                    </div>
+                </>
+            )}
         </div>
     );
 };

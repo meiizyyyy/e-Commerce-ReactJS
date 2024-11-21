@@ -46,4 +46,18 @@ const getCartAPI = (userId) => {
     return axios.get(URL_BACKEND);
 };
 
-export { fetchAllProductAPI, loginAPI, registerAPI, getAccountInfoAPI, addToCartAPI, getCartAPI };
+const removeItemFromCart = (userId, productId) => {
+    const URL_BACKEND = `/api/v1/cart/deleteItem`;
+    const data = {
+        userId: userId,
+        productId: productId,
+    };
+    return axios.delete(URL_BACKEND, {
+        headers: {
+            "Content-Type": "application/json",
+        },
+        data: data,
+    });
+};
+
+export { fetchAllProductAPI, loginAPI, registerAPI, getAccountInfoAPI, addToCartAPI, getCartAPI, removeItemFromCart };

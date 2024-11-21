@@ -140,7 +140,7 @@ const Header = (props) => {
                                     handleOpenSidebar("cart");
                                 }}
                             />
-                            <div className={cartQuantity}>{CartList.length}</div>
+                            {CartList.length > 0 && <div className={cartQuantity}>{CartList.length}</div>}
                         </div>
                     </div>
                 </div>
