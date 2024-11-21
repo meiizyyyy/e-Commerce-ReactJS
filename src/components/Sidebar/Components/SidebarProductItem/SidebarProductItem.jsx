@@ -4,7 +4,7 @@ import { IoMdClose } from "react-icons/io";
 import { message } from "antd";
 import { removeItemFromCart } from "@services/api.service.";
 import { StoreContext } from "@contexts/Store.context";
-import Loading from ".@c/Loading/Loading";
+import Loading from "@c/Loading/Loading";
 const SidebarProductItem = ({ icon, title, productId, userId, name, images, price, quantity, size, sku }) => {
     const { product__item, item__image, item__content, item__title, item__desc, item__quantity, item__price, item__remove, item__size, item__sku, loading__overlay } = styles;
     const [isLoading, setIsLoading] = useState(false);

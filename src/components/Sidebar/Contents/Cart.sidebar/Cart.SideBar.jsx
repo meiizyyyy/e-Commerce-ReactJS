@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import styles from "./styles.module.scss";
-import SidebarHeader from "@c/SidebarHeader/SidebarHeader";
+import SidebarHeader from "@c/Sidebar/Components/SidebarHeader/SidebarHeader";
 import { GrCart } from "react-icons/gr";
 import Button from "@c/Button/Button";
-import SidebarProductItem from "@c/SidebarProductItem/SidebarProductItem";
+import SidebarProductItem from "@c/Sidebar/Components/SidebarProductItem/SidebarProductItem";
 import { StoreContext } from "@contexts/Store.context";
 import Loading from "@c/Loading/Loading";
 import { useNavigate } from "react-router-dom";

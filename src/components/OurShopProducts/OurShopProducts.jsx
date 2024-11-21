@@ -3,7 +3,7 @@ import ProductItem from "@c/ProductItem/ProductItem";
 import styles from "./styles.module.scss";
 import { OurShopContext } from "@contexts/OurShop.context";
 
-import { StoreContext } from ".@contexts/Store.context";
+import { StoreContext } from "@contexts/Store.context";
 import { AiOutlineLoading } from "react-icons/ai";
 import Button from "@c/Button/Button";
 
