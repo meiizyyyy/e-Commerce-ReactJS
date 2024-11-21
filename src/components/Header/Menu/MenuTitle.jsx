@@ -10,7 +10,7 @@ const MenuTitle = ({ content, href, setIsOpen }) => {
     const { header__menu, subMenu } = styles;
 
     const { setType } = useContext(SidebarContext);
-    const { UserInfo, setUserInfo, handleLogout } = useContext(StoreContext);
+    const { UserInfo, setUserInfo, handleLogout ,  } = useContext(StoreContext);
 
     const handleClick = (e) => {
         if (content === "Sign In" && UserInfo.id === "") {

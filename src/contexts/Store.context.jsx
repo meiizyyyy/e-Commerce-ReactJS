@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import Cookies from "js-cookie";
-import { getAccountInfoAPI } from "../services/api.service.";
+import { getAccountInfoAPI, getCartAPI } from "../services/api.service.";
 import { message } from "antd";
 
 export const StoreContext = createContext({
@@ -17,6 +17,14 @@ export const StoreWrapper = (props) => {
         username: "",
     });
     const [CartList, setCartList] = useState([]);
+
+    const handleGetCartList = async (userId) => {
+        const resCart = await getCartAPI(userId);
+        if (resCart.data) {
+            setCartList(resCart.data);
+        }
+    };
+
     useEffect(() => {
         const fetchUserInfo = async () => {
             if (!userId) return;
@@ -41,13 +49,26 @@ export const StoreWrapper = (props) => {
             id: "",
             username: "",
         });
+        setCartList([]);
         if (!Cookies.get("token")) {
             message.success("Logged Out!");
         }
     };
     return (
         <StoreContext.Provider
-            value={{ UserInfo, setUserInfo, handleLogout, setUserId, isAppLoading, setIsAppLoading, isButtonLoading, setIsButtonLoading, CartList, setCartList }}>
+            value={{
+                UserInfo,
+                setUserInfo,
+                handleLogout,
+                setUserId,
+                isAppLoading,
+                setIsAppLoading,
+                isButtonLoading,
+                setIsButtonLoading,
+                CartList,
+                setCartList,
+                handleGetCartList,
+            }}>
             {props.children}
         </StoreContext.Provider>
     );

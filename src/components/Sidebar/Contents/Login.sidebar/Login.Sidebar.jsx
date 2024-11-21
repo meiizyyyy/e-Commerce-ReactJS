@@ -6,13 +6,13 @@ import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
 // import Button from "@c/Button/Button";
 import { SidebarContext } from "../../../../contexts/Sidebar.context";
-import { getAccountInfoAPI, loginAPI } from "../../../../services/api.service.";
+import { getAccountInfoAPI, getCartAPI, loginAPI } from "../../../../services/api.service.";
 import { StoreContext } from "../../../../contexts/Store.context";
 const LoginSidebar = () => {
     const { sidebar__login, login__content, login__header, login__fpw, button__register, buttonSignIn } = styles;
 
     const { isOpen, setIsOpen, type, setType } = useContext(SidebarContext);
-    const { setUserId } = useContext(StoreContext);
+    const { handleGetCartList, setUserId, setCartList } = useContext(StoreContext);
     const [isLoginClicked, setIsLoginClicked] = useState(false);
     const [form] = Form.useForm();
 
@@ -27,14 +27,13 @@ const LoginSidebar = () => {
         if (res.data) {
             console.log("check ", res.data);
             console.log("check user ", values);
-
             const { id, refreshToken, token } = res.data;
             //name, values
             setUserId(id);
             Cookies.set("token", token);
             Cookies.set("refreshToken", refreshToken);
             Cookies.set("userId", id);
-
+            await handleGetCartList(id);
             setIsOpen(false);
             message.success("Logged In!");
         } else {

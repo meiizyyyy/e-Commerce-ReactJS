@@ -9,19 +9,12 @@ import { getCartAPI } from "../../../../services/api.service.";
 
 const CartSideBar = ({}) => {
     const { container, sidebar__cart, cart__header, cart__content, cart__button, card__total, cart__totalPrice } = styles;
-    const { UserInfo, CartList, setCartList } = useContext(StoreContext);
+    const { handleGetCartList, UserInfo, CartList, setCartList } = useContext(StoreContext);
 
     const userId = UserInfo.id;
 
-    const fetchCartData = async () => {
-        const resCart = await getCartAPI(userId);
-        if (resCart.data) {
-            setCartList(resCart.data);
-        }
-    };
-
     useEffect(() => {
-        fetchCartData();
+        handleGetCartList(userId);
     }, []);
 
     console.log("Check cart list", CartList);

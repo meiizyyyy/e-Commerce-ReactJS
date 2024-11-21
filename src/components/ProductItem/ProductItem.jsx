@@ -16,7 +16,7 @@ import { StoreContext } from "../../contexts/Store.context";
 const ProductItem = ({ image, hoverImage, name, size, price, details, isHomePage = true }) => {
     const { showGrid, setShowGrid } = useContext(OurShopContext);
     const { isOpen, setIsOpen, type, setType } = useContext(SidebarContext);
-    const { CartList, setCartList } = useContext(StoreContext);
+    const { handleGetCartList, CartList, setCartList } = useContext(StoreContext);
     const [chooseSize, setChooseSize] = useState("");
 
     const handleChooseSize = (size) => {
@@ -49,14 +49,12 @@ const ProductItem = ({ image, hoverImage, name, size, price, details, isHomePage
             message.success({
                 content: res.data.msg,
             });
+
             console.log(userId);
             console.log(res.data);
+            handleGetCartList(userId);
             setType("cart");
             setIsOpen(true);
-            const resCart = await getCartAPI(userId);
-            if (resCart.data) {
-                setCartList(resCart.data);
-            }
         } else {
             message.error({
                 content: "Something went wrong :( ",
