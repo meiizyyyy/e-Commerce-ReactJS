@@ -26,6 +26,10 @@ export const StoreWrapper = (props) => {
     };
 
     useEffect(() => {
+        handleGetCartList(userId);
+    }, []);
+
+    useEffect(() => {
         const fetchUserInfo = async () => {
             if (!userId) return;
             try {
