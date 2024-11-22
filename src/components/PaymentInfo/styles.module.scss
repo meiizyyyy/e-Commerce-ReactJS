@@ -1,0 +1,21 @@
+@use "@styles/mixins.module.scss" as mixins;
+@use "@styles/variables.module.scss" as variables;
+
+fieldset {
+    @include mixins.flex_box_custom(center, center, 10px);
+    text-transform: uppercase;
+    font-size: 14px;
+    color: variables.$secondary-color;
+    border: 1px solid #e1e1e1;
+    legend {
+        text-align: center;
+        span {
+            color: green;
+        }
+    }
+}
+p {
+    text-align: center;
+    font-size: 14px;
+    color: variables.$third-color;
+}

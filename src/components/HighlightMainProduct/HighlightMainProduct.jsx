@@ -12,7 +12,9 @@ const HighlightMainProduct = (props) => {
             <BannerCountdown />
             <div className={container__product}>
                 {data.map((item) => {
-                    return <ProductItem key={item._id} image={item.images[0]} hoverImage={item.images[1]} name={item.name} price={item.price} details={item} />;
+                    return (
+                        <ProductItem key={item._id} productID={item._id} image={item.images[0]} hoverImage={item.images[1]} name={item.name} price={item.price} details={item} />
+                    );
                 })}
             </div>
         </div>

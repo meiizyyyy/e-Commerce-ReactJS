@@ -20,6 +20,11 @@ const CartSideBar = ({}) => {
         setIsOpen(false);
         navigate("/OurShop");
     };
+
+    const handleNavigateToCart = () => {
+        setIsOpen(false);
+        navigate("/Cart");
+    };
     const subTotal = CartList.reduce((total, item) => {
         return total + item.total;
     }, 0);
@@ -27,8 +32,8 @@ const CartSideBar = ({}) => {
         handleGetCartList(userId);
     }, []);
 
-    console.log("Check cart list", CartList);
-    console.log("Check sub Total", subTotal);
+    // console.log("Check cart list", CartList);
+    // console.log("Check sub Total", subTotal);
     return (
         <div className={container}>
             <div className={cart__header}>
@@ -76,7 +81,7 @@ const CartSideBar = ({}) => {
                                     <p>${subTotal}</p>
                                 </div>
                                 <div className={cart__button}>
-                                    <Button content={"VIEW CART"} />
+                                    <Button content={"VIEW CART"} onClick={handleNavigateToCart} />
                                     <Button content={"CHECK OUT"} isPrimary={false} />
                                 </div>
                             </div>

@@ -14,19 +14,32 @@ import { addToCartAPI, getCartAPI } from "@services/api.service.";
 import { StoreContext } from "@contexts/Store.context";
 import { AiOutlineLoading } from "react-icons/ai";
 import Loading from "@c/Loading/Loading";
+import { Link, useNavigate } from "react-router-dom";
+import { getProductInfoAPI } from "@services/api.service.";
 
-const ProductItem = ({ image, hoverImage, name, size, price, details, isHomePage = true }) => {
+const ProductItem = ({ image, hoverImage, productID, name, size, price, details, isHomePage = true }) => {
     const { showGrid, setShowGrid } = useContext(OurShopContext);
     const { isOpen, setIsOpen, type, setType } = useContext(SidebarContext);
-    const { handleGetCartList, CartList, setCartList } = useContext(StoreContext);
+    const { handleGetCartList, CartList, setCartList, ProductDetailID, setProductDetailID, ProductDetail, setProductDetail } = useContext(StoreContext);
     const [isButtonLoading, setIsButtonLoading] = useState(false);
     const [chooseSize, setChooseSize] = useState("");
+    const navigate = useNavigate();
 
     const handleChooseSize = (size) => {
         setChooseSize(size);
     };
     const handleClearSize = () => {
         setChooseSize("");
+    };
+
+    const handleGetProductDetail = async (productID) => {
+        const resProd = await getProductInfoAPI(productID);
+        if (resProd.data) {
+            console.log(resProd.data);
+            setProductDetailID(resProd.data._id);
+            setProductDetail(resProd.data);
+            navigate(`/ProductDetail/${productID}`);
+        }
     };
 
     const handleAddToCart = async () => {
@@ -100,11 +113,17 @@ const ProductItem = ({ image, hoverImage, name, size, price, details, isHomePage
     return (
         <div className={showGrid ? product__card : product__cardList}>
             <div className={itemImg}>
-                <img src={image} alt="" />
-                <img className={imgOnHover} src={hoverImage} alt="" />
+                <img src={image} alt="" onClick={() => handleGetProductDetail(productID)} />
+                <img className={imgOnHover} src={hoverImage} alt="" onClick={() => handleGetProductDetail(productID)} />
                 <div className={CTAList}>
                     <div className={ctaITEM}>
-                        <img src={Cart} alt="" />
+                        <img
+                            src={Cart}
+                            alt=""
+                            onClick={() => {
+                                handleGetProductDetail(productID);
+                            }}
+                        />
                     </div>
                     <div className={ctaITEM}>
                         <img src={Favorite} alt="" />
@@ -137,11 +156,16 @@ const ProductItem = ({ image, hoverImage, name, size, price, details, isHomePage
                         <div
                             className={cls(product__title, {
                                 [isCenter]: !isHomePage && showGrid,
-                            })}>
-                            <a>{name}</a>
+                            })}
+                            onClick={() => handleGetProductDetail(productID)}>
+                            {name}
                         </div>
-                        <div className={product__brand}>Brand 001</div>
-                        <div className={cls(product__price, { [isCenter]: !isHomePage && showGrid })}>${price}</div>
+                        <div className={product__brand} onClick={() => handleGetProductDetail(productID)}>
+                            Brand 001
+                        </div>
+                        <div className={cls(product__price, { [isCenter]: !isHomePage && showGrid })} onClick={() => handleGetProductDetail(productID)}>
+                            ${price}
+                        </div>
                         <div className={product__button}>
                             <Button styles={{ fontSize: "12px" }} content={isButtonLoading ? <Loading /> : "ADD TO CARD"} onClick={handleAddToCart} />
                         </div>
@@ -151,10 +175,13 @@ const ProductItem = ({ image, hoverImage, name, size, price, details, isHomePage
                         <div
                             className={cls(product__title, {
                                 [isCenter]: !isHomePage,
-                            })}>
-                            <a>{name}</a>
+                            })}
+                            onClick={() => handleGetProductDetail(productID)}>
+                            {name}
                         </div>
-                        <div className={cls(product__price, { [isCenter]: !isHomePage })}>${price}</div>
+                        <div className={cls(product__price, { [isCenter]: !isHomePage })} onClick={() => handleGetProductDetail(productID)}>
+                            ${price}
+                        </div>
                     </>
                 )}
             </div>

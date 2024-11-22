@@ -6,16 +6,30 @@ import { OurShopContext } from "@contexts/OurShop.context";
 import { StoreContext } from "@contexts/Store.context";
 import { AiOutlineLoading } from "react-icons/ai";
 import Button from "@c/Button/Button";
+import { getProductInfoAPI } from "@services/api.service.";
 
 const OurShopProducts = ({ data, handleLoadMoreProduct }) => {
     const { showGrid, total } = useContext(OurShopContext);
     const { isButtonLoading, setIsButtonLoading } = useContext(StoreContext);
     const { container__highlight, container__product, container__productList, btn__loading } = styles;
+
     return (
         <>
             <div className={showGrid ? container__product : container__productList}>
                 {data.map((item) => {
-                    return <ProductItem key={item._id} image={item.images[0]} hoverImage={item.images[1]} name={item.name} price={item.price} details={item} isHomePage={false} />;
+                    return (
+                        <ProductItem
+                            
+                            key={item._id}
+                            productID={item._id}
+                            image={item.images[0]}
+                            hoverImage={item.images[1]}
+                            name={item.name}
+                            price={item.price}
+                            details={item}
+                            isHomePage={false}
+                        />
+                    );
                 })}
             </div>
             {data.length < total && (

@@ -12,7 +12,7 @@ import { useContext } from "react";
 function App() {
     const location = useLocation();
 
-    const hide = ["/Elements", "/AboutUs", "/Contacts", "/OurShop", "/Cart"].includes(location.pathname);
+    const hide = ["/Elements", "/AboutUs", "/Contacts", "/OurShop", "/Cart", "/ProductDetail/"].includes(location.pathname) || location.pathname.startsWith("/ProductDetail");
 
     return (
         <>

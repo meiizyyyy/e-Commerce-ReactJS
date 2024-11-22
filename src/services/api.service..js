@@ -5,6 +5,11 @@ const fetchAllProductAPI = (sortType, page, limit) => {
     return axios.get(URL_BACKEND);
 };
 
+const getProductInfoAPI = (id) => {
+    const URL_BACKEND = `/api/v1/product/${id}`;
+    return axios.get(URL_BACKEND);
+};
+
 const loginAPI = (username, password) => {
     const URL_BACKEND = `/api/v1/login`;
     const data = {
@@ -60,4 +65,4 @@ const removeItemFromCart = (userId, productId) => {
     });
 };
 
-export { fetchAllProductAPI, loginAPI, registerAPI, getAccountInfoAPI, addToCartAPI, getCartAPI, removeItemFromCart };
+export { fetchAllProductAPI, loginAPI, registerAPI, getAccountInfoAPI, addToCartAPI, getCartAPI, removeItemFromCart, getProductInfoAPI };

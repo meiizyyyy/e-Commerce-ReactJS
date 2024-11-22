@@ -18,7 +18,8 @@ export const StoreWrapper = (props) => {
         username: "",
     });
     const [CartList, setCartList] = useState([]);
-
+    const [ProductDetailID, setProductDetailID] = useState([]);
+    const [ProductDetail, setProductDetail] = useState([]);
     const handleGetCartList = async (userId) => {
         setIsSidebarLoading(true);
         const resCart = await getCartAPI(userId);
@@ -32,6 +33,8 @@ export const StoreWrapper = (props) => {
     useEffect(() => {
         handleGetCartList(userId);
     }, []);
+
+    
 
     useEffect(() => {
         const fetchUserInfo = async () => {
@@ -78,6 +81,10 @@ export const StoreWrapper = (props) => {
                 handleGetCartList,
                 isSidebarLoading,
                 setIsSidebarLoading,
+                ProductDetailID,
+                setProductDetailID,
+                ProductDetail,
+                setProductDetail,
             }}>
             {props.children}
         </StoreContext.Provider>

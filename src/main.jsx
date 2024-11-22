@@ -15,6 +15,10 @@ import { SidebarContext, SidebarWrapper } from "@contexts/Sidebar.context.jsx";
 import { StoreWrapper } from "@contexts/Store.context.jsx";
 import { OurShopWrapper } from "@contexts/OurShop.context.jsx";
 import CartPage from "@/Pages/Cart.jsx";
+import ProductDetail from "@/Pages/ProductDetail.jsx";
+import { StoreContext } from "@contexts/Store.context.jsx";
+
+
 
 const router = createBrowserRouter([
     {
@@ -40,6 +44,10 @@ const router = createBrowserRouter([
             {
                 path: "/Cart",
                 element: <CartPage />,
+            },
+            {
+                path: `/ProductDetail/:ProductID`,
+                element: <ProductDetail />,
             },
         ],
     },
