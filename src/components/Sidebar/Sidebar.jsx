@@ -3,7 +3,7 @@ import styles from "./styles.module.scss";
 import { SidebarContext } from "../../contexts/Sidebar.context";
 import classNames from "classnames";
 import { TfiClose } from "react-icons/tfi";
-import LoginSidebar from "@c/SideBar/Contents/Login.sidebar/Login.Sidebar";
+import LoginSidebar from "@c/Sidebar/Contents/Login.sidebar/Login.Sidebar";
 import RegisterSidebar from "./Contents/Register.sidebar/Register.Sidebar";
 import CompareSideBar from "./Contents/Compare.sidebar/Compare.SideBar";
 import WishlistSideBar from "./Contents/Wishlist.sidebar/WishList.SideBar";
