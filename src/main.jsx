@@ -4,7 +4,9 @@ import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "normalize.css";
+import "/src/assets/styles/_global.module.scss";
 import "@styles/main.module.scss";
+
 
 import App from "./App.jsx";
 import ElementsPage from "@/Pages/Elements.jsx";
