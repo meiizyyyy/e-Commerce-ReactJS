@@ -3,6 +3,7 @@ import MainLayouts from "@c/Layouts/Layouts";
 import CartSteps from "@c/CartPage/CartSteps/CartSteps";
 import Contents from "@c/CartPage/Contents/Contents";
 import styles from "@c/CartPage/styles.module.scss";
+import { ScrollRestoration } from "react-router-dom";
 const CartPage = () => {
     const { stepsLayouts } = styles;
 
@@ -14,6 +15,7 @@ const CartPage = () => {
             <MainLayouts>
                 <Contents />
             </MainLayouts>
+            <ScrollRestoration />
         </div>
     );
 };

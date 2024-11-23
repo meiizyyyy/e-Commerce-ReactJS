@@ -5,7 +5,7 @@ import { data } from "./data";
 const PaymentInfo = () => {
     const { checkout__item } = styles;
     return (
-        <>
+        <div>
             <fieldset>
                 <legend>
                     Guaranteed <span>safe </span>checkout
@@ -15,7 +15,7 @@ const PaymentInfo = () => {
                 })}
             </fieldset>
             <p>Your Payment is 100% Secure</p>
-        </>
+        </div>
     );
 };
 

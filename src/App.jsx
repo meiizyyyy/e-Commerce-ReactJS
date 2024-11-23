@@ -8,6 +8,7 @@ import Sidebar from "@c/Sidebar/Sidebar";
 import { getAccountInfoAPI } from "./services/api.service.";
 import { StoreContext } from "@contexts/Store.context";
 import { useContext } from "react";
+import TopBar from "@c/TopBar/TopBar";
 
 function App() {
     const location = useLocation();
@@ -16,6 +17,7 @@ function App() {
 
     return (
         <>
+            <TopBar />
             <Sidebar />
             <Header />
             {!hide && <HomePage />}

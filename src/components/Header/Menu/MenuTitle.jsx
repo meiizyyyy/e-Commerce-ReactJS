@@ -4,11 +4,12 @@ import { Link } from "react-router-dom";
 import { SidebarContext } from "@contexts/Sidebar.context";
 import { StoreContext } from "@contexts/Store.context";
 import Cookies from "js-cookie";
+import { TopBarContext } from "@contexts/Topbar.context";
 
 const MenuTitle = ({ content, href, setIsOpen }) => {
     const [isShowSubMenu, setIsShowSubMenu] = useState(false);
     const { header__menu, subMenu } = styles;
-
+    const { isTopBarOpen, setIsTopBarOpen } = useContext(TopBarContext);
     const { setType } = useContext(SidebarContext);
     const { UserInfo, setUserInfo, handleLogout } = useContext(StoreContext);
 
@@ -19,7 +20,7 @@ const MenuTitle = ({ content, href, setIsOpen }) => {
             setType("login");
         } else if (content === "Search") {
             e.preventDefault();
-            setIsOpen(true);
+            setIsTopBarOpen(true);
             setType("search");
         } else {
             setType("");

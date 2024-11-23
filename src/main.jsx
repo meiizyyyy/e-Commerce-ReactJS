@@ -17,8 +17,8 @@ import { OurShopWrapper } from "@contexts/OurShop.context.jsx";
 import CartPage from "@/Pages/Cart.jsx";
 import ProductDetail from "@/Pages/ProductDetail.jsx";
 import { StoreContext } from "@contexts/Store.context.jsx";
-
-
+import { TopBarWrapper } from "@contexts/Topbar.context.jsx";
+import ErrorPage from "./Pages/Error.jsx";
 
 const router = createBrowserRouter([
     {
@@ -50,6 +50,7 @@ const router = createBrowserRouter([
                 element: <ProductDetail />,
             },
         ],
+        errorElement: <ErrorPage />,
     },
 ]);
 
@@ -57,9 +58,11 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
         <StoreWrapper>
             <OurShopWrapper>
-                <SidebarWrapper>
-                    <RouterProvider router={router} />
-                </SidebarWrapper>
+                <TopBarWrapper>
+                    <SidebarWrapper>
+                        <RouterProvider router={router} />
+                    </SidebarWrapper>
+                </TopBarWrapper>
             </OurShopWrapper>
         </StoreWrapper>
     </React.StrictMode>,
