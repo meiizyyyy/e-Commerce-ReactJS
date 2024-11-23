@@ -2,8 +2,8 @@ import React from "react";
 import styles from "./styles.module.scss";
 import { GrFavorite } from "react-icons/gr";
 import Button from "@c/Button/Button";
-import SidebarHeader from "@c/SideBar/Components/SidebarHeader/SidebarHeader";
-import SidebarProductItem from "@c/SideBar/Components/SidebarProductItem/SidebarProductItem";
+import SidebarHeader from "@c/Sidebar/Components/SidebarHeader/SidebarHeader";
+import SidebarProductItem from "@c/Sidebar/Components/SidebarProductItem/SidebarProductItem";
 
 const WishlistSideBar = () => {
     const { container, sidebar__wishlist, wishlist__header, wishlist__content, wishlist__button } = styles;
