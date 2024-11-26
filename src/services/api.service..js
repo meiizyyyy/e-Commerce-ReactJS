@@ -46,6 +46,18 @@ const addToCartAPI = (userId, productId, quantity, size) => {
     return axios.post(URL_BACKEND, data);
 };
 
+const changeQuantityAPI = (userId, productId, quantity, size, isMultiple) => {
+    const URL_BACKEND = `/api/v1/cart`;
+    const data = {
+        userId: userId,
+        productId: productId,
+        quantity: quantity,
+        size: size,
+        isMultiple: true,
+    };
+    return axios.post(URL_BACKEND, data);
+};
+
 const getCartAPI = (userId) => {
     const URL_BACKEND = `/api/v1/cart/${userId}`;
     return axios.get(URL_BACKEND);
@@ -65,4 +77,16 @@ const removeItemFromCart = (userId, productId) => {
     });
 };
 
-export { fetchAllProductAPI, loginAPI, registerAPI, getAccountInfoAPI, addToCartAPI, getCartAPI, removeItemFromCart, getProductInfoAPI };
+const removeCartAPI = (userId) => {
+    const URL_BACKEND = `/api/v1/cart/delete`;
+    const data = {
+        userId: userId,
+    };
+    return axios.delete(URL_BACKEND, {
+        headers: {
+            "Content-Type": "application/json",
+        },
+        data: data,
+    });
+};
+export { fetchAllProductAPI, loginAPI, registerAPI, getAccountInfoAPI, addToCartAPI, getCartAPI, removeItemFromCart, getProductInfoAPI, changeQuantityAPI, removeCartAPI };

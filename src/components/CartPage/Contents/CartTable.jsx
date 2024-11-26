@@ -1,42 +1,9 @@
 import React from "react";
 import styles from "@c/CartPage/styles.module.scss";
 import SelectBox from "@c/Filter/SelectBox";
-const CartTable = () => {
-    const { cartTable, size } = styles;
-
-    const cartItems = [
-        {
-            id: 1,
-            name: "Amet faucibus nunc",
-            price: 1879.99,
-            sku: 87654,
-            size: "M",
-            quantity: 1,
-            image: "https://xstore.8theme.com/elementor2/marseille04/wp-content/uploads/sites/2/2022/12/Image-7.1-min-285x340.jpg",
-        },
-        {
-            id: 2,
-            name: "10K Yellow Gold",
-            price: 99.99,
-            sku: 12345,
-            size: "S",
-            quantity: 1,
-            image: "https://xstore.8theme.com/elementor2/marseille04/wp-content/uploads/sites/2/2022/12/Image-7.1-min-285x340.jpg",
-        },
-        {
-            id: 3,
-            name: "Consectetur nibh at",
-            price: 119.99,
-            sku: 12349,
-            size: "M",
-            quantity: 1,
-            image: "https://xstore.8theme.com/elementor2/marseille04/wp-content/uploads/sites/2/2022/12/Image-7.1-min-285x340.jpg",
-        },
-    ];
-
-    const handleDelete = (id) => {
-        console.log("Delete item with id:", id);
-    };
+import Loading from "@c/Loading/Loading";
+const CartTable = ({ CartList, handleGetData, isCartLoading, handleRemoveProduct }) => {
+    const { cartTable, size, loading__overlay } = styles;
 
     const handleQuantityChange = (id, newQuantity) => {
         console.log("Update item:", id, "to quantity:", newQuantity);
@@ -52,8 +19,9 @@ const CartTable = () => {
         { label: "7", value: "7" },
     ];
 
-    const getValueSelect = (value, type) => {
-        console.log(value, type);
+    const getValueSelect = (userId, productId, quantity, size) => {
+        const data = { userId: userId, productId: productId, quantity: quantity, size: size };
+        handleGetData(data);
     };
 
     return (
@@ -70,10 +38,10 @@ const CartTable = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {cartItems.map((item) => (
+                    {CartList.map((item) => (
                         <tr key={item.id}>
                             <td className={styles.product}>
-                                <img src={item.image} alt={item.name} />
+                                <img src={item.images[0]} alt={item.name} />
                                 <div>
                                     <p>{item.name}</p>
                                     <p>
@@ -82,16 +50,28 @@ const CartTable = () => {
                                 </div>
                             </td>
                             <td>
-                                <div onClick={() => handleDelete(item.id)}>&#128465;</div>
+                                <div onClick={() => handleRemoveProduct(item.userId, item.productId)}>&#128465;</div>
                             </td>
                             <td>${item.price.toFixed(2)}</td>
                             <td>{item.sku}</td>
-                            <td><SelectBox options={showOptions} getValue={getValueSelect} type="show" /></td>
+                            <td>
+                                <SelectBox
+                                    options={showOptions}
+                                    getValue={(e) => getValueSelect(item.userId, item.productId, e, item.size)}
+                                    type="show"
+                                    currentValue={item.quantity}
+                                />
+                            </td>
                             <td>${(item.price * item.quantity).toFixed(2)}</td>
                         </tr>
                     ))}
                 </tbody>
             </table>
+            {isCartLoading && (
+                <div className={loading__overlay}>
+                    <Loading />
+                </div>
+            )}
         </div>
     );
 };

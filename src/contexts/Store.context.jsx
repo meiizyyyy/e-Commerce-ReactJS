@@ -34,8 +34,6 @@ export const StoreWrapper = (props) => {
         handleGetCartList(userId);
     }, []);
 
-    
-
     useEffect(() => {
         const fetchUserInfo = async () => {
             if (!userId) return;
@@ -85,6 +83,7 @@ export const StoreWrapper = (props) => {
                 setProductDetailID,
                 ProductDetail,
                 setProductDetail,
+                userId,
             }}>
             {props.children}
         </StoreContext.Provider>
