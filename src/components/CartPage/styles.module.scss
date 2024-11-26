@@ -51,11 +51,12 @@
     }
 }
 .contentLayout {
-    @include mixins.flex_box_custom(space-between, center, 0px);
+    @include mixins.flex_box_custom(space-between, flex-start, 0px);
     margin-top: -100px;
-
+    padding-top: 30px;
+    flex-wrap: wrap;
     .left__content {
-        width: 50%;
+        width: 55%;
         .cartTable {
             // width: 100%;
 
@@ -160,11 +161,89 @@
                 }
             }
         }
+
+        .table__action {
+            @include mixins.flex_box_custom(space-between, center, 0px);
+            margin-top: 15px;
+            .discount__action {
+                @include mixins.flex_box_custom(flex-start, center, 0px);
+                input {
+                    border: 1px solid #e1e1e1;
+                    padding: 8px 15px;
+                    border-radius: 2px;
+                }
+
+                Button {
+                    width: 100%;
+                    height: 36px;
+                    border-radius: unset;
+                    padding: 0 10px;
+                    font-size: 12px;
+                }
+            }
+
+            .clear__action {
+                Button {
+                    padding: 0 30px;
+                    text-align: center;
+                    width: 100%;
+                    font-size: 12px;
+                    height: 36px;
+                    border-radius: unset;
+                }
+            }
+        }
     }
 
     .right__content {
         @include mixins.flex_box_custom(flex-start, center, 50px);
         flex-direction: column;
-        width: 50%;
+        width: 40%;
+    }
+}
+
+.cartSummary_container {
+    @include mixins.flex_box_custom(center, initial, 20px);
+    flex-direction: column;
+    border: 2px solid black;
+    padding: 30px;
+    margin-top: 30px;
+    width: 88%;
+    .summary_Title {
+        padding-bottom: 20px;
+        font-size: 14px;
+        color: variables.$primary-color;
+        border-bottom: 1px solid #e1e1e1;
+        line-height: 1.1;
+        text-transform: uppercase;
+    }
+
+    .summary_SubTotal {
+        @include mixins.flex_box_custom(space-between, center, 0px);
+
+        :nth-child(1) {
+            font-size: 16px;
+            color: variables.$third-color;
+        }
+
+        :nth-child(2) {
+            font-size: 14px;
+            color: #888888;
+        }
+    }
+
+    .summary_Total {
+        @include mixins.flex_box_custom(space-between, center, 0px);
+        font-size: 20px;
+        color: variables.$secondary-color;
+    }
+    .summary_cta {
+        @include mixins.flex_box_custom(center, center, 10px);
+        flex-direction: column;
+
+        Button {
+            border-radius: 2px;
+            width: 100%;
+        }
     }
 }

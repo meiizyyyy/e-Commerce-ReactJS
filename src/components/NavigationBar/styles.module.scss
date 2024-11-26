@@ -5,10 +5,11 @@
     @include mixins.flex_box_custom(space-between, center, 10px);
     font-size: 14px;
     color: variables.$primary-color;
+    padding: 0 10px;
     a {
         color: #888888;
     }
-    
+
     .navigationBar__right {
         color: #888888;
     }

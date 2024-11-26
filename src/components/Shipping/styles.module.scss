@@ -4,7 +4,7 @@
 .container__shipping {
     @include mixins.flex_box_custom(space-between, center, 0px);
     background-color: variables.$primary-color;
-    margin-top: -6%;
+    margin-top: -15%;
     padding: 20px 50px;
 }
 
