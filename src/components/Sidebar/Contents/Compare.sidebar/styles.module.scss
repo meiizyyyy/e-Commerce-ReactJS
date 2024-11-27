@@ -1,0 +1,32 @@
+@use "@styles/mixins.module.scss" as mixins;
+@use "@styles/variables.module.scss" as variables;
+
+.container {
+    @include mixins.flex_box_custom(space-between, center, 5px);
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    .compare__header {
+        font-size: 18px;
+    }
+    .sidebar__compare {
+        @include mixins.flex_box_custom(normal, center, 50px);
+        flex-direction: column;
+        width: 100%;
+        height: 80%;
+        overflow-y: auto;
+
+        .compare__content {
+            width: 90%;
+            overflow-y: auto;
+        }
+    }
+    .compare__button {
+        @include mixins.flex_box_custom(center, center, 5px);
+        width: 100%;
+        padding-bottom: 40px;
+        Button {
+            width: 90%;
+        }
+    }
+}

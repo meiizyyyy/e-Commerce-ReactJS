@@ -1,0 +1,30 @@
+@use "@styles/mixins.module.scss" as mixins;
+@use "@styles/variables.module.scss" as variables;
+
+.container__highlight {
+    margin-top: 50px;
+    @include mixins.flex_box_custom(space-between, center, 10px);
+}
+
+.container__product {
+    @include mixins.flex_box_custom(space-evenly, flex-start, 20px);
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.container__productList {
+    @include mixins.flex_box_custom(center, flex-start, 20px);
+    flex-direction: column;
+}
+
+.btn__loading {
+    animation: loading 1s linear infinite;
+    @keyframes loading {
+        0% {
+            transform: rotate(0);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+}

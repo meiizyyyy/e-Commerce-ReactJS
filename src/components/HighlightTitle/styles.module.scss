@@ -1,0 +1,44 @@
+@use "@styles/mixins.module.scss" as mixins;
+@use "@styles/variables.module.scss" as variables;
+
+.container {
+    @include mixins.flex_box_custom(center, center, 0px);
+    margin: 65px 0px 15px;
+}
+
+.container__headline {
+    text-align: center;
+    .container__headline_main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: variables.$primary_color;
+        font-size: 24px;
+        line-height: 32px;
+        text-wrap: nowrap;
+        padding: 0 60px;
+    }
+
+    .container__headline_desc {
+        color: variables.$third_color;
+        font-size: 14px;
+        line-height: 32px;
+        text-transform: uppercase;
+    }
+}
+
+.container::before {
+    content: " ";
+    height: 2px;
+    width: 50%;
+    border-top: 1px solid #e1e1e1;
+    border-bottom: 1px solid #e1e1e1;
+}
+
+.container::after {
+    content: " ";
+    height: 2px;
+    width: 50%;
+    border-top: 1px solid #e1e1e1;
+    border-bottom: 1px solid #e1e1e1;
+}

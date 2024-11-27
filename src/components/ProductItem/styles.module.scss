@@ -1,0 +1,260 @@
+@use "@styles/mixins.module.scss" as mixins;
+@use "@styles/variables.module.scss" as variables;
+
+.product__card {
+    @include mixins.flex_box_custom(flex-start, flex-start, 0px);
+    flex-direction: column;
+    height: 100%;
+
+    .itemImg {
+        height: 353px;
+        position: relative;
+        cursor: pointer;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 600ms;
+        }
+
+        .imgOnHover {
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        &:hover .imgOnHover {
+            opacity: 1;
+            transition: all 600ms;
+        }
+
+        .CTAList {
+            opacity: 0;
+            transition: all 300ms;
+            position: absolute;
+            right: 0px;
+            bottom: 20px;
+            background-color: #fff;
+        }
+        &:hover .CTAList {
+            opacity: 1;
+            transition: all 300ms;
+            right: 20px;
+            bottom: 20px;
+        }
+        .ctaITEM {
+            @include mixins.flex_box_custom(center, center, 0px);
+            width: 40px;
+            height: 40px;
+            transition: all 300ms;
+            cursor: pointer;
+            img {
+                width: 17px;
+                height: 17px;
+            }
+
+            &:hover {
+                transition: all 300ms;
+                background-color: #d9d9d9;
+            }
+        }
+    }
+    .product__content {
+        width: 100%;
+
+        @include mixins.flex_box_custom(unset, center, 0px);
+        flex-direction: column;
+
+        .product__title {
+            cursor: pointer;
+            margin-top: 10px;
+
+            width: 100%;
+            a {
+                font-size: 16px;
+                font-weight: 400;
+                cursor: pointer;
+                color: variables.$secondary-color;
+            }
+        }
+
+        .product__price {
+            font-size: 14px;
+            font-weight: 400;
+            cursor: pointer;
+            color: variables.$third-color;
+            width: 100%;
+        }
+
+        .product__size {
+            @include mixins.flex_box_custom(center, center, 10px);
+            text-align: center;
+            width: 100%;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            .size__item {
+                @include mixins.flex_box_custom(center, center, 0px);
+                border: 1px solid #e1e1e1;
+                padding: 4px 6px;
+                font-size: 10px;
+                cursor: pointer;
+                transition: all 200ms;
+                &:hover {
+                    border-color: variables.$primary-color;
+                    transition: all 200ms;
+                }
+            }
+        }
+
+        .product__brand {
+            width: 100%;
+            margin-top: 2px;
+            text-align: center;
+            color: #888888;
+            font-size: 14px;
+        }
+        .isCenter {
+            text-align: center;
+        }
+
+        .product__button {
+            margin: 10px auto 0px;
+        }
+    }
+}
+
+.product__cardList {
+    @include mixins.flex_box_custom(center, center, 50px);
+
+    .itemImg {
+        position: relative;
+        cursor: pointer;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 600ms;
+        }
+
+        .imgOnHover {
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        &:hover .imgOnHover {
+            opacity: 1;
+            transition: all 600ms;
+        }
+
+        .CTAList {
+            opacity: 0;
+            transition: all 300ms;
+            position: absolute;
+            right: 0px;
+            bottom: 20px;
+            background-color: #fff;
+        }
+        &:hover .CTAList {
+            opacity: 1;
+            transition: all 300ms;
+            right: 20px;
+            bottom: 20px;
+        }
+        .ctaITEM {
+            @include mixins.flex_box_custom(center, center, 0px);
+            width: 40px;
+            height: 40px;
+            transition: all 300ms;
+            cursor: pointer;
+            img {
+                width: 17px;
+                height: 17px;
+            }
+
+            &:hover {
+                transition: all 300ms;
+                background-color: #d9d9d9;
+            }
+        }
+    }
+    .product__content {
+        @include mixins.flex_box_custom(flex-start, center, 0px);
+        flex-direction: column;
+
+        .product__title {
+            margin-top: 10px;
+            cursor: pointer;
+            width: 100%;
+            a {
+                font-size: 16px;
+                font-weight: 400;
+                cursor: pointer;
+                color: variables.$secondary-color;
+            }
+        }
+
+        .product__price {
+            font-size: 14px;
+            font-weight: 400;
+            cursor: pointer;
+            color: variables.$third-color;
+            width: 100%;
+        }
+
+        .product__size {
+            @include mixins.flex_box_custom(center, center, 10px);
+            text-align: center;
+            width: 100%;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            .size__item {
+                @include mixins.flex_box_custom(center, center, 0px);
+                border: 1px solid #e1e1e1;
+                padding: 4px 6px;
+                font-size: 10px;
+                cursor: pointer;
+                transition: all 200ms;
+                &:hover {
+                    border-color: variables.$primary-color;
+                    transition: all 200ms;
+                }
+            }
+        }
+
+        .product__brand {
+            cursor: pointer;
+            width: 100%;
+            margin-top: 2px;
+            text-align: left;
+            color: #888888;
+            font-size: 14px;
+        }
+        .isCenter {
+            text-align: center;
+        }
+
+        .product__button {
+            margin: 10px auto 0px;
+        }
+    }
+}
+
+.isActiveSize {
+    border-color: variables.$primary-color !important;
+}
+
+.clearSize {
+    font-size: 12px;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 5px;
+    transition: all 200ms;
+}

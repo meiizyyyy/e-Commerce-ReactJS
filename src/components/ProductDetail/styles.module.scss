@@ -1,0 +1,106 @@
+@use "@styles/mixins.module.scss" as mixins;
+@use "@styles/variables.module.scss" as variables;
+
+.product {
+    @include mixins.flex_box_custom(space-between, flex-start, 10px);
+    margin-top: 20px;
+
+    .product__leftContent {
+        @include mixins.flex_box_custom(unset, center, 10px);
+        flex-wrap: wrap;
+
+        width: 50%;
+        .item__image {
+            width: calc(50% - 5px);
+
+            img {
+                max-width: 100%;
+            }
+        }
+    }
+
+    .product__rightContent {
+        @include mixins.flex_box_custom(flex-start, flex-start, 30px);
+        flex-direction: column;
+        width: 50%;
+        min-height: 70vh;
+        padding: 15px;
+
+        .product__name {
+            color: variables.$secondary-color;
+            font-size: 24px;
+        }
+        .product__price {
+            color: #888888;
+            font-size: 20px;
+        }
+        .product__description {
+            font-size: 16px;
+            color: variables.$third-color;
+        }
+        .product__sizeCurrent {
+            font-size: 16px;
+            color: variables.$third-color;
+        }
+        .product__size {
+            @include mixins.flex_box_custom(flex-start, center, 10px);
+            flex-direction: row-reverse;
+            font-size: 16px;
+            color: variables.$third-color;
+            cursor: pointer;
+
+            .clearSize {
+                font-size: 14px;
+                color: variables.$secondary-color;
+                text-decoration: underline;
+            }
+            .size__item {
+                @include mixins.flex_box_custom(center, center, 0px);
+                padding: 9px;
+                border: 1px solid #888888;
+                width: 10px;
+                height: 10px;
+                font-size: 11px;
+            }
+        }
+        .variation {
+            @include mixins.flex_box_custom(center, center, 0px);
+            width: 100%;
+
+            .product__quantity {
+                text-align: center;
+                width: 20%;
+            }
+            .cta__addToCart {
+                width: 80%;
+
+                Button {
+                    width: 100%;
+                }
+            }
+        }
+        .hr__line {
+            @include mixins.flex_box_custom(center, center, 20px);
+            width: 100%;
+            .hr__text {
+                color: variables.$secondary-color;
+                font-size: 12px;
+            }
+            .line {
+                width: 80%;
+                height: 1px;
+                background-color: #e1e1e1;
+            }
+        }
+
+        .cta__buyNow {
+            width: 100%;
+            Button {
+                width: 100%;
+            }
+        }
+        .checkout__info {
+            width: 100%;
+        }
+    }
+}
