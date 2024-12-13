@@ -34,10 +34,7 @@ const Sidebar = () => {
             default:
                 break;
         }
-        console.log("hehehehehehehehehehehe");
     };
-
-    console.log("check type", type);
 
     return (
         <div className="relative">
