@@ -5,17 +5,17 @@ import { SidebarContext } from "@contexts/Sidebar.context";
 import { StoreContext } from "@contexts/Store.context";
 import Cookies from "js-cookie";
 import { TopBarContext } from "@contexts/Topbar.context";
+import { LeftBarContext } from "@contexts/LeftBarContext";
 
 const MenuTitle = ({ content, href, setIsOpen }) => {
     // const { isTopBarOpen, setIsTopBarOpen } = useContext(TopBarContext);
-
+    const { isLeftBarOpen, setIsLeftBarOpen } = useContext(LeftBarContext);
     const { setType } = useContext(SidebarContext);
     const { UserInfo, setUserInfo, handleLogout } = useContext(StoreContext);
     const [isShowSubMenu, setIsShowSubMenu] = useState(false);
     const location = useLocation();
     const currentPath = location.pathname.slice(1, location.pathname.length);
     const isActive = currentPath === href;
-
 
     const handleClick = (e) => {
         if (content === "Sign In" && UserInfo.id === "") {
@@ -27,6 +27,7 @@ const MenuTitle = ({ content, href, setIsOpen }) => {
             setIsTopBarOpen(true);
             setType("search");
         } else {
+            setIsLeftBarOpen(false);
             setType("");
         }
     };
@@ -51,7 +52,7 @@ const MenuTitle = ({ content, href, setIsOpen }) => {
     useEffect(() => {
         isUserLoggedIn();
     }, [UserInfo.id]);
-   
+
     return (
         <>
             <Link

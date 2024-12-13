@@ -11,13 +11,14 @@ import { GrCart, GrFavorite } from "react-icons/gr";
 
 import { StoreContext } from "@contexts/Store.context";
 import { AiOutlineMenu } from "react-icons/ai";
+import { LeftBarContext } from "@contexts/LeftBarContext";
 
 const Header = (props) => {
     const [scrollDirection, setScrollDirection] = useState();
     const [translateYPos, setTranslateYPos] = useState(80);
     const [scrollPosition, setScrollPosition] = useState(0);
     const [stickyOn, setStickyOn] = useState(false);
-
+    const { isLeftBarOpen, setIsLeftBarOpen } = useContext(LeftBarContext);
     const { isOpen, setIsOpen, type, setType } = useContext(SidebarContext);
     const { CartList } = useContext(StoreContext);
 
@@ -52,6 +53,10 @@ const Header = (props) => {
         setIsOpen(true);
 
         setType(type);
+    };
+
+    const handleOpenLeftBar = () => {
+        setIsLeftBarOpen(true);
     };
 
     useEffect(() => {
@@ -100,7 +105,7 @@ const Header = (props) => {
             <div className="my-2 flex w-full items-center justify-between lg:max-w-7xl">
                 <div className="pl-2 lg:hidden">
                     <div>
-                        <AiOutlineMenu />{" "}
+                        <AiOutlineMenu onClick={handleOpenLeftBar} />
                     </div>
                 </div>
 

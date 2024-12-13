@@ -10,7 +10,6 @@ import { useNavigate } from "react-router-dom";
 import { SidebarContext } from "@contexts/Sidebar.context";
 
 const CartSideBar = ({}) => {
-
     const { handleGetCartList, UserInfo, CartList, setCartList, isSidebarLoading, setIsSidebarLoading } = useContext(StoreContext);
     const { setIsOpen } = useContext(SidebarContext);
     const userId = UserInfo.id;
@@ -31,7 +30,7 @@ const CartSideBar = ({}) => {
     useEffect(() => {
         handleGetCartList(userId);
     }, []);
-
+    console.log(userId);
     // console.log("Check cart list", CartList);
     // console.log("Check sub Total", subTotal);
     return (
@@ -82,7 +81,7 @@ const CartSideBar = ({}) => {
                                 </div>
                                 <div className="flex w-full flex-col items-center justify-center gap-1">
                                     <Button content={"VIEW CART"} onClick={handleNavigateToCart} />
-                                    <Button  content={"CHECK OUT"} isPrimary={false} />
+                                    <Button content={"CHECK OUT"} isPrimary={false} />
                                 </div>
                             </div>
                         </>
