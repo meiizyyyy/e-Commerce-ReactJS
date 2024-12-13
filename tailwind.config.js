@@ -68,6 +68,7 @@ export default {
                 banner: "url('@images/Banner.jpeg')",
                 "footer-texture": "url('/img/footer-texture.png')",
                 homeCountDown: "url('@images/HighlightCountdown.jpeg')",
+                ourShopCountDown: "url(@images/OurShopCountdown.jpeg)",
             },
 
             animation: {
@@ -80,8 +81,8 @@ export default {
                 },
             },
             boxShadow: {
-                'customHeader': '2px 0px 12px 0px rgba(0, 0, 0, 0.15)', // Định nghĩa shadow tùy chỉnh
-              },
+                customHeader: "2px 0px 12px 0px rgba(0, 0, 0, 0.15)", // Định nghĩa shadow tùy chỉnh
+            },
         },
     },
     plugins: [],

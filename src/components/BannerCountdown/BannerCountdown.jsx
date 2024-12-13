@@ -12,7 +12,7 @@ const BannerCountdown = () => {
     const targetDate = "2025";
 
     return (
-        <div className="w-[95%] flex h-full pb-6 lg:pb-0 md:w-full flex-col items-center justify-center gap-6 bg-homeCountDown bg-cover bg-center bg-no-repeat lg:h-full lg:w-1/2">
+        <div className="w-[95%] flex h-full pb-6 lg:pb-0 md:w-full flex-col items-center justify-center gap-6 bg-homeCountDown bg-cover bg-center bg-no-repeat lg:h-full lg:w-[56%]">
             <div className="mt-16 flex max-w-64 flex-wrap items-center justify-center gap-3 xl:flex-nowrap">
                 <CountdownTime targetDate={targetDate} />
             </div>

@@ -92,10 +92,10 @@ const ProductItem = ({ variant, image, hoverImage, productID, name, size, price,
     // console.log("Check showGrid", showGrid);
     // console.log("Check type list", showGrid);
 
-    const customVariant = variant === "highlight" ? "w-1/2" : variant === "popular" ? "w-1/2 md:w-1/4 " : " ";
+    const customVariant = variant === "highlight" ? "w-1/2 h-full" : variant === "popular" ? "w-1/2 md:w-1/4 " : variant === "ourShop" ? "w-1/3 md:w-1/5" : "";
 
     return (
-        <div className={showGrid ? `flex h-full ${customVariant} flex-col items-center md:justify-start` : "flex items-center justify-center gap-[50px]"}>
+        <div className={showGrid ? `flex ${customVariant} flex-col items-center md:justify-start` : "flex items-center justify-center gap-[50px]"}>
             <div className={showGrid ? "group relative w-11/12 cursor-pointer" : "relative cursor-pointer"}>
                 <img className="object-cover transition-all duration-700" src={image} alt="" onClick={() => handleGetProductDetail(productID)} />
                 <img
@@ -166,8 +166,8 @@ const ProductItem = ({ variant, image, hoverImage, productID, name, size, price,
                             onClick={() => handleGetProductDetail(productID)}>
                             ${price}
                         </div>
-                        <div className="mt-3">
-                            <Button className="text-xs" content={isButtonLoading ? <Loading /> : "ADD TO CARD"} onClick={handleAddToCart} />
+                        <div className="mt-3 flex items-center justify-center text-center">
+                            <Button isPrimary content={isButtonLoading ? <Loading /> : "ADD TO CARD"} onClick={handleAddToCart} />
                         </div>
                     </>
                 ) : (

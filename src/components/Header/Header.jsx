@@ -10,6 +10,7 @@ import { TfiReload } from "react-icons/tfi";
 import { GrCart, GrFavorite } from "react-icons/gr";
 
 import { StoreContext } from "@contexts/Store.context";
+import { AiOutlineMenu } from "react-icons/ai";
 
 const Header = (props) => {
     const [scrollDirection, setScrollDirection] = useState();
@@ -49,6 +50,7 @@ const Header = (props) => {
     const handleOpenSidebar = (type) => {
         console.log("Clicked???", type);
         setIsOpen(true);
+
         setType(type);
     };
 
@@ -92,12 +94,14 @@ const Header = (props) => {
         <div
             className={
                 stickyOn
-                    ? "shadow-customHeader fixed -top-24 left-0 right-0 z-50 flex translate-y-24 items-center justify-center bg-[#ffffffe6] pt-4 backdrop-blur-sm transition-transform duration-700"
+                    ? "fixed -top-24 left-0 right-0 z-50 flex translate-y-24 items-center justify-center bg-[#ffffffe6] pt-4 shadow-customHeader backdrop-blur-sm transition-transform duration-700"
                     : "absolute left-0 right-0 top-0 flex items-center justify-center py-2"
             }>
             <div className="my-2 flex w-full items-center justify-between lg:max-w-7xl">
                 <div className="pl-2 lg:hidden">
-                    <div>Left </div>
+                    <div>
+                        <AiOutlineMenu />{" "}
+                    </div>
                 </div>
 
                 <div className="hidden items-center justify-center pl-2 lg:flex lg:gap-6">
@@ -139,7 +143,7 @@ const Header = (props) => {
                             return <MenuTitle content={item.content} href={item.href} key={index} setIsOpen={setIsOpen} />;
                         })}
                     </div>
-                    <div className="flex gap-5 cursor-pointer">
+                    <div className="flex cursor-pointer gap-5">
                         <TfiReload
                             onClick={() => {
                                 handleOpenSidebar("compare");

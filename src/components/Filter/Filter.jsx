@@ -1,15 +1,11 @@
 import React, { useContext } from "react";
-import styles from "./styles.module.scss";
+
 import { TfiLayoutGrid4 } from "react-icons/tfi";
 import { CiCircleList } from "react-icons/ci";
 import { OurShopContext } from "@contexts/OurShop.context";
 import SelectBox from "./SelectBox";
 const Filter = () => {
-    const { filter__container, filter__leftContent, filter__rightContent, select__box, showType } = styles;
-
     const { showOption, sortOption, setSortID, setShowID, setShowGrid, showGrid } = useContext(OurShopContext);
-
-
 
     const handleSelectedValue = (value, type) => {
         if (type === "sort") {
@@ -27,10 +23,10 @@ const Filter = () => {
         }
     };
     return (
-        <div className={filter__container}>
-            <div className={filter__leftContent}>
+        <div className="flex w-full items-center justify-between gap-2 py-4 px-2 md:px-0 text-sm text-mine-shaft-900 2xl:max-w-[1250px]">
+            <div className="flex items-center justify-between gap-5">
                 <SelectBox options={sortOption} getValue={handleSelectedValue} type="sort" />
-                <div className={showType}>
+                <div className="flex cursor-pointer items-center justify-between gap-2">
                     <TfiLayoutGrid4
                         style={{ fontSize: "25px" }}
                         onClick={() => {
@@ -46,7 +42,7 @@ const Filter = () => {
                     />
                 </div>
             </div>
-            <div className={filter__rightContent}>
+            <div className="flex items-center justify-between gap-2">
                 <span>Show</span>
                 <SelectBox options={showOption} getValue={handleSelectedValue} type="show" />
             </div>

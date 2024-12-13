@@ -1,10 +1,15 @@
 import React from "react";
-import styles from "./styles.module.scss";
+
 const SelectBox = ({ options, getValue, type, currentValue }) => {
-    const { select__box } = styles;
+    const { showOption, sortOption } = options;
+
+    console.log(type);
 
     return (
-        <select className={select__box} onChange={(e) => getValue(e.target.value, type) } value={currentValue}>
+        <select
+            className={`max-w-20 cursor-pointer overflow-auto text-ellipsis border p-1 leading-8 md:max-w-72 `}
+            onChange={(e) => getValue(e.target.value, type)}
+            value={currentValue}>
             {options.map((option) => {
                 return (
                     <option key={option.value} value={option.value}>

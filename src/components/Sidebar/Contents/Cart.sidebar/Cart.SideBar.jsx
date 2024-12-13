@@ -81,8 +81,8 @@ const CartSideBar = ({}) => {
                                     <p>${subTotal}</p>
                                 </div>
                                 <div className="flex w-full flex-col items-center justify-center gap-1">
-                                    <Button className="w-11/12" content={"VIEW CART"} onClick={handleNavigateToCart} />
-                                    <Button className="w-11/12" content={"CHECK OUT"} isPrimary={false} />
+                                    <Button content={"VIEW CART"} onClick={handleNavigateToCart} />
+                                    <Button  content={"CHECK OUT"} isPrimary={false} />
                                 </div>
                             </div>
                         </>
