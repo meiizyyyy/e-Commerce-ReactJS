@@ -44,8 +44,8 @@ const Sidebar = () => {
             <div className={classNames({ ["fixed inset-0 z-[1000] bg-[#0000004d] transition-all duration-500"]: isOpen })} onClick={handleToggle}></div>
 
             <div
-                className={classNames("fixed right-0 top-0 z-[1001] h-screen w-[280px] translate-x-full bg-white transition-all duration-500 lg:w-[350px]", {
-                    ["translate-x-[0%] transition-all duration-500"]: isOpen,
+                className={classNames("fixed right-0 top-0 z-[1001] h-screen w-[280px] translate-x-[100%] bg-white transition-all duration-500 lg:w-[350px]", {
+                    ["!translate-x-[0%] transition-all duration-500"]: isOpen,
                 })}>
                 {isOpen && (
                     <div
