@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styles from "./styles.module.scss";
 const CountdownTime = ({ targetDate }) => {
-    const { box, title } = styles;
     const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
     function calculateTimeLeft() {
@@ -26,7 +24,7 @@ const CountdownTime = ({ targetDate }) => {
         }, 1000);
 
         return () => clearTimeout(timer);
-    },[timeLeft] );
+    }, [timeLeft]);
 
     const formatNumber = (number) => {
         return String(number).padStart(2, "0");
@@ -37,9 +35,9 @@ const CountdownTime = ({ targetDate }) => {
     Object.keys(timeLeft).forEach((interval) => {
         if (timeLeft[interval] !== undefined) {
             timerComponents.push(
-                <span key={interval} className={box}>
+                <span key={interval} className="min-w-24 rounded bg-white px-1 py-1 text-center md:min-w-28 lg:min-w-28 ">
                     {formatNumber(timeLeft[interval])}
-                    <span className={title}> {interval}</span>
+                    <span className="text-lg text-chicago-400"> {interval}</span>
                 </span>,
             );
         }

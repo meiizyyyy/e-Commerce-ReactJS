@@ -1,12 +1,11 @@
 import React, { useContext, useState } from "react";
-import styles from "./styles.module.scss";
 import { IoMdClose } from "react-icons/io";
 import { message } from "antd";
 import { removeItemFromCart } from "@services/api.service.";
 import { StoreContext } from "@contexts/Store.context";
 import Loading from "@c/Loading/Loading";
 const SidebarProductItem = ({ icon, title, productId, userId, name, images, price, quantity, size, sku }) => {
-    const { product__item, item__image, item__content, item__title, item__desc, item__quantity, item__price, item__remove, item__size, item__sku, loading__overlay } = styles;
+    
     const [isLoading, setIsLoading] = useState(false);
     const { handleGetCartList } = useContext(StoreContext);
 
@@ -23,27 +22,27 @@ const SidebarProductItem = ({ icon, title, productId, userId, name, images, pric
     };
 
     return (
-        <div className={product__item}>
+        <div className="group relative gap-2 flex items-start p-5 transition-all duration-300 hover:bg-[#f7f7f7] hover:transition-all hover:duration-300">
             {isLoading && (
-                <div className={loading__overlay}>
+                <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center bg-[#ffffff80]">
                     <Loading />
                 </div>
             )}
 
-            <div className={item__image}>
-                <img src={images} alt="" />
+            <div className="w-1/3">
+                <img className="max-h-28 min-w-14" src={images} alt="" />
             </div>
 
-            <div className={item__content}>
-                <div className={item__title}>{name}</div>
-                <div className={item__size}>Size: {size}</div>
+            <div className="flex h-full max-w-[60%] flex-col justify-center gap-1">
+                <div className="overflow-hidden text-ellipsis whitespace-nowrap text-mine-shaft-900">{name}</div>
+                <div className="text-[#9e9e9e]">Size: {size}</div>
 
-                <div className={item__desc}>
-                    <div className={item__quantity}>{quantity} *</div>
-                    <div className={item__price}>{quantity * price}</div>
+                <div className="flex items-start gap-2 text-sm text-shark-950">
+                    <div className="text-nowrap">{quantity} *</div>
+                    <div className="text-nowrap overflow-hidden">{quantity * price}</div>
                 </div>
-                <div className={item__sku}>SKU: {sku}</div>
-                <div className={item__remove} onClick={handleRemoveItem}>
+                <div className="">SKU: {sku}</div>
+                <div className="absolute right-1 top-8 cursor-pointer opacity-0 transition-all duration-300 ease-linear group-hover:opacity-100" onClick={handleRemoveItem}>
                     <IoMdClose />
                 </div>
             </div>

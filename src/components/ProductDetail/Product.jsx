@@ -43,8 +43,6 @@ const Product = () => {
     const [currentSize, setCurrentSize] = useState("");
     const [isButtonLoading, setIsButtonLoading] = useState(false);
 
-    
-
     const handleGetProduct = async (ProductID) => {
         setIsAppLoading(true);
         const res = await getProductInfoAPI(ProductID);
@@ -104,13 +102,13 @@ const Product = () => {
 
     useEffect(() => {
         handleGetProduct(ProductID);
-       
     }, []);
 
     return (
         <>
             {isAppLoading === true ? (
-                <div style={{ display: "flex", justifyContent: "center", margin: "120px 0 120px" }}>
+                // <div style={{ display: "flex", justifyContent: "center", margin: "120px 0 120px" }}>
+                <div className="mb-[120] mt-[120] flex justify-center">
                     <Spin indicator={<LoadingOutlined style={{ fontSize: 40, color: "#333333" }} spin />} />
                 </div>
             ) : (

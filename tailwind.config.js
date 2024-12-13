@@ -2,6 +2,23 @@
 export default {
     content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
     theme: {
+        screens: {
+            sm: "640px",
+            // => @media (min-width: 640px) { ... }
+
+            md: "768px",
+            // => @media (min-width: 768px) { ... }
+
+            lg: "1024px",
+            // => @media (min-width: 1024px) { ... }
+            1200: "1200px",
+
+            xl: "1280px",
+            // => @media (min-width: 1280px) { ... }
+
+            "2xl": "1536px",
+            // => @media (min-width: 1536px) { ... }
+        },
         extend: {
             fontFamily: {
                 rtbmn: ['"Roboto Mono"', "sans-serif"],
@@ -50,7 +67,21 @@ export default {
             backgroundImage: {
                 banner: "url('@images/Banner.jpeg')",
                 "footer-texture": "url('/img/footer-texture.png')",
+                homeCountDown: "url('@images/HighlightCountdown.jpeg')",
             },
+
+            animation: {
+                loading: "loading 1s linear infinite",
+            },
+            keyframes: {
+                loading: {
+                    "0%": { transform: "rotate(0)" },
+                    "100%": { transform: "rotate(360deg)" },
+                },
+            },
+            boxShadow: {
+                'customHeader': '2px 0px 12px 0px rgba(0, 0, 0, 0.15)', // Định nghĩa shadow tùy chỉnh
+              },
         },
     },
     plugins: [],

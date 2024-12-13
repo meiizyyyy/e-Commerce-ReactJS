@@ -16,7 +16,7 @@ const Footer = () => {
             <div className="hover:text- container flex flex-wrap items-center justify-center gap-10 px-2">
                 {data.map((item, index) => {
                     return (
-                        <div className="hover:text-shark-400 duration-300 hover:transition-all hover:duration-300">
+                        <div key={index} className="duration-300 hover:text-shark-400 hover:transition-all hover:duration-300">
                             <Link to={item.href} key={index}>
                                 {item.content}
                             </Link>
@@ -35,7 +35,7 @@ const Footer = () => {
                 <img src={Debit} alt="123123" />
             </div>
 
-            <div className="flex items-center justify-center mb-20">
+            <div className="mb-20 flex items-center justify-center">
                 <p>Copyright © Here </p>
             </div>
         </div>

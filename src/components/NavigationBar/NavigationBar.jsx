@@ -1,11 +1,9 @@
 import React from "react";
-import styles from "./styles.module.scss";
 const NavigationBar = ({ leftContent, rightContent }) => {
-    const { navigationBar, navigationBar__left, navigationBar__right } = styles;
     return (
-        <div className={navigationBar}>
-            <div className={navigationBar__left}>{leftContent}</div>
-            <div className={navigationBar__right}>{rightContent}</div>
+        <div className="flex items-center justify-between gap-2 px-2 text-sm text-mine-shaft-900">
+            <div className="text-mine-shaft-400">{leftContent}</div>
+            <div className="text-mine-shaft-400">{rightContent}</div>
         </div>
     );
 };

@@ -1,9 +1,7 @@
 import React from "react";
-import styles from "./styles.module.scss";
 import { AiOutlineLoading } from "react-icons/ai";
 const Loading = () => {
-    const { loading } = styles;
-    return <AiOutlineLoading className={loading} />;
+    return <AiOutlineLoading className="loading animate-spin" />;
 };
 
 export default Loading;

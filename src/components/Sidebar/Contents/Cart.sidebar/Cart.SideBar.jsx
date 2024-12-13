@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import styles from "./styles.module.scss";
+
 import SidebarHeader from "@c/Sidebar/Components/SidebarHeader/SidebarHeader";
 import { GrCart } from "react-icons/gr";
 import Button from "@c/Button/Button";
@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { SidebarContext } from "@contexts/Sidebar.context";
 
 const CartSideBar = ({}) => {
-    const { container, sidebar__cart, cart__header, cart__content, cart__button, card__total, cart__totalPrice, loading__overlay, noItem__content, noItem__button } = styles;
+
     const { handleGetCartList, UserInfo, CartList, setCartList, isSidebarLoading, setIsSidebarLoading } = useContext(StoreContext);
     const { setIsOpen } = useContext(SidebarContext);
     const userId = UserInfo.id;
@@ -35,28 +35,28 @@ const CartSideBar = ({}) => {
     // console.log("Check cart list", CartList);
     // console.log("Check sub Total", subTotal);
     return (
-        <div className={container}>
-            <div className={cart__header}>
+        <div className="flex h-screen w-full flex-col items-center gap-1">
+            <div className="text-lg">
                 <SidebarHeader icon={<GrCart />} title="CART" />
             </div>
 
             {CartList.length === 0 ? (
                 <>
-                    <div className={noItem__content}>No product in the cart</div>
-                    <div className={noItem__button}>
+                    <div className="mt-2 text-sm text-shark-950">No product in the cart</div>
+                    <div className="mt-5 text-xs">
                         <Button content={"RETURN TO SHOP"} isPrimary={false} onClick={handleNavigateToShop} />
                     </div>
                 </>
             ) : (
                 <>
                     {isSidebarLoading ? (
-                        <div className={loading__overlay}>
+                        <div className="absolute bottom-0 top-0 flex h-full w-full items-center justify-center bg-[#ffffff80]">
                             <Loading />
                         </div>
                     ) : (
                         <>
-                            <div className={sidebar__cart}>
-                                <div className={cart__content}>
+                            <div className="flex h-4/5 w-full flex-col items-center overflow-y-auto">
+                                <div className="w-11/12 overflow-y-auto">
                                     {CartList.map((item, index) => {
                                         return (
                                             <SidebarProductItem
@@ -75,14 +75,14 @@ const CartSideBar = ({}) => {
                                 </div>
                             </div>
 
-                            <div className={card__total}>
-                                <div className={cart__totalPrice}>
+                            <div className="flex w-full flex-col items-center justify-between gap-1 pb-10">
+                                <div className="flex items-center justify-between gap-1">
                                     <p>Sub Total: </p>
                                     <p>${subTotal}</p>
                                 </div>
-                                <div className={cart__button}>
-                                    <Button content={"VIEW CART"} onClick={handleNavigateToCart} />
-                                    <Button content={"CHECK OUT"} isPrimary={false} />
+                                <div className="flex w-full flex-col items-center justify-center gap-1">
+                                    <Button className="w-11/12" content={"VIEW CART"} onClick={handleNavigateToCart} />
+                                    <Button className="w-11/12" content={"CHECK OUT"} isPrimary={false} />
                                 </div>
                             </div>
                         </>

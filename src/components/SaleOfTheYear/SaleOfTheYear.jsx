@@ -1,10 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
-import styles from "./styles.module.scss";
+
 import Button from "@c/Button/Button";
 const SaleOfTheYear = () => {
-    const { container__soty, soty_maincontent, soty__title, soty__desc, soty_button, soty__images } = styles;
     const [scrollDirection, setScrollDirection] = useState();
-    const [translateXPos, setTranslateXPos] = useState(80);
+    const [translateXPos, setTranslateXPos] = useState(100);
     const [scrollPosition, setScrollPosition] = useState(0);
     const [isInView, setIsInView] = useState(false);
 
@@ -55,7 +54,7 @@ const SaleOfTheYear = () => {
         if (scrollDirection === "down") {
             setTranslateXPos(translateXPos <= 0 ? 0 : translateXPos - 1);
         } else if (scrollDirection === "up") {
-            setTranslateXPos(translateXPos >= 80 ? 80 : translateXPos + 1);
+            setTranslateXPos(translateXPos >= 100 ? 100 : translateXPos + 1);
         }
     };
 
@@ -66,18 +65,22 @@ const SaleOfTheYear = () => {
     // console.log("check direc", scrollDirection);
     // console.log("check srcll", scrollPosition);
     return (
-        <div className={container__soty}>
-            <div className={soty__images} style={{ transform: `translateX(${translateXPos}px)`, transition: "transform 600ms" }}>
+        <div className="mt-32 flex items-center justify-between lg:relative">
+            <div
+                className="hidden lg:absolute lg:right-[300px] lg:block lg:w-[350px] xl:right-[400px]"
+                style={{ transform: `translateX(${translateXPos}px)`, transition: "transform 600ms" }}>
                 <img src="https://xstore.8theme.com/elementor2/marseille04/wp-content/uploads/sites/2/2022/12/Image_1.jpeg" alt="" />
             </div>
-            <div className={soty_maincontent}>
-                <h2 className={soty__title}>Sale of the year</h2>
-                <p className={soty__desc}>Libero sed faucibus facilisis fermentum. Est nibh sed massa sodales.</p>
-                <div className={soty_button}>
+            <div className="flex flex-col items-center justify-center md:w-72">
+                <h2 className="text-center text-4xl capitalize leading-[46px]">Sale of the year</h2>
+                <p className="text-center leading-6 text-chicago-700">Libero sed faucibus facilisis fermentum. Est nibh sed massa sodales.</p>
+                <div className="mt-5 flex items-center justify-center text-chicago-700">
                     <Button content={"Read more"} isPrimary={false} />
                 </div>
             </div>
-            <div className={soty__images} style={{ transform: `translateX(-${translateXPos}px)`, transition: "transform 600ms" }}>
+            <div
+                className="hidden lg:absolute lg:left-[300px] lg:block lg:w-[350px] xl:left-[400px]"
+                style={{ transform: `translateX(-${translateXPos}px)`, transition: "transform 600ms" }}>
                 <img src="https://xstore.8theme.com/elementor2/marseille04/wp-content/uploads/sites/2/2022/12/Image_2.jpeg" alt="" />
             </div>
         </div>

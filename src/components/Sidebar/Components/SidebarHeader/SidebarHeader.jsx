@@ -1,10 +1,7 @@
 import React from "react";
-import styles from "./styles.module.scss";
 const SidebarHeader = ({ icon, title }) => {
-    const { sidebar__HeaderContainer } = styles;
-
     return (
-        <div className={sidebar__HeaderContainer}>
+        <div className="flex flex-col items-center justify-center gap-2">
             {icon}
             <div>{title}</div>
         </div>

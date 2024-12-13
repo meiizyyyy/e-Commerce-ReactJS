@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import { Link } from "react-router-dom";
 import { SidebarContext } from "@contexts/Sidebar.context";
@@ -35,31 +35,36 @@ const MenuTitle = ({ content, href, setIsOpen }) => {
         }
     };
 
-    // const handleOnHover = () => {
-    //     if (content === "Sign In" && UserInfo.id) {
-    //         setIsShowSubMenu(true);
-    //     }
-    // };
-    // const handleMouseLeave = () => {
-    //     setIsShowSubMenu(false);
-    // };
+    const handleOnHover = () => {
+        if (content === "Sign In" && UserInfo.id) {
+            setIsShowSubMenu(true);
+        }
+    };
+    const handleMouseLeave = () => {
+        setIsShowSubMenu(false);
+    };
+
+    useEffect(() => {
+        isUserLoggedIn();
+    }, [UserInfo.id]);
 
     return (
         <>
             <Link
                 to={href}
-                className="text-mine-shaft-900 after:bg-shark-900 after:transition-transform-opacity flex-col py-[10px] text-[15px] after:block after:h-[3px] after:w-full after:origin-right after:scale-x-0 after:opacity-0 after:duration-300 hover:after:scale-x-100 hover:after:opacity-100"
+                className="after:transition-transform-opacity relative flex-col py-[10px] text-[15px] text-mine-shaft-900 after:block after:h-[3px] after:w-full after:origin-right after:scale-x-0 after:bg-shark-900 after:opacity-0 after:duration-300 hover:after:scale-x-100 hover:after:opacity-100"
                 onClick={handleClick}
-                // onMouseEnter={handleOnHover}
-            >
-                {content}
-                {/* {isUserLoggedIn(content)} */}
-                {/* {isShowSubMenu && (
-                    <div  onMouseLeave={handleMouseLeave}>
+                onMouseEnter={handleOnHover}>
+                {isUserLoggedIn(content)}
+                {isShowSubMenu && (
+                    <div
+                        className="shadow-customHeader absolute right-1 top-10 flex w-56 flex-col items-start justify-center gap-1 bg-[#ffffffe6] p-3 backdrop-blur-sm transition-all duration-500 ease-linear"
+                        onMouseLeave={handleMouseLeave}
+                        onClick={handleMouseLeave}>
                         <div>Hello {`${UserInfo.username}`}</div>
                         <div onClick={handleLogout}>LOG OUT</div>
                     </div>
-                )} */}
+                )}
             </Link>
             {/* <div className={header__menu}>{content}</div> */}
         </>

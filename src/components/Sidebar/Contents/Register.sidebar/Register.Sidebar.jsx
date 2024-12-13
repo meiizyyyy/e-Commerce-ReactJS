@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import styles from "./styles.module.scss";
 import { Checkbox, Col, Divider, Form, Input, Row, Button, notification } from "antd";
 import FormItem from "antd/es/form/FormItem";
 import { Link } from "react-router-dom";
@@ -9,10 +8,9 @@ import { registerAPI } from "@services/api.service.";
 import { AxiosError } from "axios";
 
 const RegisterSidebar = () => {
-    const { sidebar__register, register__content, register__header, buttonSignIn, buttonRegister } = styles;
-
     const { isOpen, setIsOpen, type, setType } = useContext(SidebarContext);
-
+    const [hovered, setHovered] = useState(false);
+    const [RegisterHovered, setRegisterHovered] = useState(false);
     const [isRegisterClicked, setIsRegisterClicked] = useState(false);
     const [form] = Form.useForm();
 
@@ -36,9 +34,9 @@ const RegisterSidebar = () => {
         setIsRegisterClicked(false);
     };
     return (
-        <div className={sidebar__register}>
-            <div className={register__header}>REGISTER</div>
-            <div className={register__content}>
+        <div className="flex w-full flex-col items-center justify-center gap-12">
+            <div className="mt-5 text-lg">REGISTER</div>
+            <div className="w-11/12">
                 <Form form={form} name="register" layout="vertical" onFinish={onFinish}>
                     <Form.Item
                         // label="Email"
@@ -99,7 +97,25 @@ const RegisterSidebar = () => {
                     {/* <FormItem> */}
                     {/* <Button content={"Login"} onClick={() => form.submit()} /> */}
                     <FormItem>
-                        <Button className={buttonRegister} loading={isRegisterClicked} onClick={() => form.submit()}>
+                        <Button
+                            style={{
+                                marginTop: "5px",
+                                height: "42px",
+                                width: "100%",
+                                cursor: "pointer",
+                                borderRadius: "2px",
+                                border: "1px solid",
+                                borderColor: hovered ? "#333333" : "transparent", // Màu viền khi hover
+                                backgroundColor: hovered ? "transparent" : "#333333", // Màu nền khi hover
+                                color: hovered ? "#333333" : "white", // Màu chữ khi hover
+                                padding: "0.6875rem 0.75rem",
+                                fontSize: "0.75rem",
+                                transition: "all 0.3s",
+                            }}
+                            onMouseEnter={() => setHovered(true)}
+                            onMouseLeave={() => setHovered(false)}
+                            loading={isRegisterClicked}
+                            onClick={() => form.submit()}>
                             REGISTER
                         </Button>
                     </FormItem>
@@ -114,14 +130,28 @@ const RegisterSidebar = () => {
                     {/* </FormItem> */}
 
                     <Button
-                        className={buttonSignIn}
+                        style={{
+                            height: "42px",
+                            width: "100%",
+                            cursor: "pointer",
+                            borderRadius: "2px",
+                            border: "1px solid",
+                            borderColor: RegisterHovered ? "transparent" : "#333333", // Màu viền khi hover
+                            backgroundColor: RegisterHovered ? "#333333" : "transparent", // Màu nền khi hover
+                            color: RegisterHovered ? "white" : "#333333", // Màu chữ khi hover
+                            padding: "0.6875rem 0.75rem",
+                            fontSize: "0.75rem",
+                            transition: "all 0.3s",
+                        }}
+                        onMouseEnter={() => setRegisterHovered(true)}
+                        onMouseLeave={() => setRegisterHovered(false)}
                         content={"Register"}
                         isPrimary={false}
                         onClick={(e) => {
                             e.preventDefault();
                             setType("login");
                         }}>
-                        Log In
+                        SIGN IN
                     </Button>
                 </Form>
             </div>

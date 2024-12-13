@@ -37,7 +37,7 @@ const Header = (props) => {
     };
 
     const handleTranslateY = () => {
-        if (scrollPosition > 160) {
+        if (scrollPosition > 100) {
             setStickyOn(true);
             // console.log("Bat");
         } else {
@@ -47,6 +47,7 @@ const Header = (props) => {
     };
 
     const handleOpenSidebar = (type) => {
+        console.log("Clicked???", type);
         setIsOpen(true);
         setType(type);
     };
@@ -88,10 +89,15 @@ const Header = (props) => {
     // console.log("check context ", isOpen);
     return (
         // sticky here
-        <div className="absolute left-0 right-0 top-0 flex items-center justify-center py-2">
+        <div
+            className={
+                stickyOn
+                    ? "shadow-customHeader fixed -top-24 left-0 right-0 z-50 flex translate-y-24 items-center justify-center bg-[#ffffffe6] pt-4 backdrop-blur-sm transition-transform duration-700"
+                    : "absolute left-0 right-0 top-0 flex items-center justify-center py-2"
+            }>
             <div className="my-2 flex w-full items-center justify-between lg:max-w-7xl">
                 <div className="pl-2 lg:hidden">
-                    <div>Click</div>
+                    <div>Left </div>
                 </div>
 
                 <div className="hidden items-center justify-center pl-2 lg:flex lg:gap-6">
@@ -114,15 +120,26 @@ const Header = (props) => {
                 </div>
 
                 <div className="pr-2 lg:hidden">
-                    <div>Click</div>
+                    <div>
+                        <GrCart
+                            onClick={() => {
+                                handleOpenSidebar("cart");
+                            }}
+                        />
+                        {CartList.length > 0 && (
+                            <div className="absolute right-0.5 top-6 z-10 flex h-4 w-4 items-center justify-center rounded-full bg-mine-shaft-900 text-xs text-white">
+                                {CartList.length}
+                            </div>
+                        )}
+                    </div>
                 </div>
                 <div className="hidden items-center justify-center lg:flex lg:gap-6 lg:pl-2">
                     <div className="flex justify-center gap-8">
-                        {dataMenu.slice(0, 3).map((item, index) => {
-                            return <MenuTitle content={item.content} href={item.href} key={index} />;
+                        {dataMenu.slice(3, 7).map((item, index) => {
+                            return <MenuTitle content={item.content} href={item.href} key={index} setIsOpen={setIsOpen} />;
                         })}
                     </div>
-                    <div className="flex gap-5">
+                    <div className="flex gap-5 cursor-pointer">
                         <TfiReload
                             onClick={() => {
                                 handleOpenSidebar("compare");
@@ -135,13 +152,17 @@ const Header = (props) => {
                             }}
                         />
 
-                        <div>
+                        <div className="relative">
                             <GrCart
                                 onClick={() => {
                                     handleOpenSidebar("cart");
                                 }}
                             />
-                            {/* {CartList.length > 0 && <div>{CartList.length}</div>} */}
+                            {CartList.length > 0 && (
+                                <div className="absolute -right-3 -top-2 z-10 flex h-4 w-4 items-center justify-center rounded-full bg-mine-shaft-900 text-xs text-white">
+                                    {CartList.length}
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>
